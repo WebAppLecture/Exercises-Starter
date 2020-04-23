@@ -80,12 +80,12 @@ Solche Effekte brauchen viel Erfahrung, ermöglichen aber ohne viele HTML Elemen
 
 ### 02.4 Animation ###
 
-Ereitern nun die Keyframeanimation `@keyframes rotate {...}` im Stylesheet.
+Ereitern nun die Keyframeanimation `@keyframes rotation {...}` im Stylesheet.
 
 Animiert die Rotation von 0° bis 360° mit der `transform: rotate(deg)` Eigenschaft.
 
 Füge `.accent` eine Animation hinzu: `animation: rotate 5s normal linear infinite;`
-* `rotate`: Bezeichnet die Keyframeanimation die verwendet werden soll
+* `rotation`: Bezeichnet die Keyframeanimation die verwendet werden soll
 * `5s`: wie lange dauert ein Durchlauf der Animation
 * `normal`: das Zahnrad läuft die Animation von vorne nach hinten durch
 * `linear`: die Animation wird linear durchlaufen
