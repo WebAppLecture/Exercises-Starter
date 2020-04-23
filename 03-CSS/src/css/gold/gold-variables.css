@@ -1,6 +1,7 @@
 :root {
     --bright-gold-trans: rgba(255, 236, 179, 0.6);
     --dark-gold-trans: rgba(82, 62, 22,0.6);
+    --darkest-gold: hsl(40, 58%, 15%);
     --dark-gold: rgb(82, 62, 22);
     --gold: rgb(206, 168, 85);
     --bright-gold: rgb(255, 236, 179);

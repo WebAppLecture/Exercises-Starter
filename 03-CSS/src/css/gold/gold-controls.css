@@ -80,11 +80,6 @@
 }
 
 .reset:active {
-    border-top: .5vh solid var(--dark-gold);
-    border-right: .5vh solid var(--dark-gold);
-    border-bottom: .5vh solid var(--dark-gold);
-    border-left: .5vh solid var(--gold);
-
     font-size: 2.2vh;
 }
 
@@ -102,9 +97,10 @@
     line-height: 2vh;
 }
 
+.reset:active,
 .skin-change > div:active {
     border-top: .5vh solid var(--dark-gold);
-    border-right: .5vh solid var(--dark-gold);
+    border-right: .5vh solid var(--darkest-gold);
     border-bottom: .5vh solid var(--dark-gold);
     border-left: .5vh solid var(--gold);
 }

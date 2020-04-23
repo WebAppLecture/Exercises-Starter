@@ -4,13 +4,13 @@ body {
 
 .gameBox {
     border-top: 3vh solid var(--gold);
-    border-right: 3vh solid var(--dark-gold);
+    border-right: 3vh solid var(--darkest-gold);
     border-bottom: 3vh solid var(--gold);
     border-left: 3vh solid var(--bright-gold);
 
     border-radius: .3vh;
 
-    background: linear-gradient(to right, var(--gold) 25%,var(--bright-gold) 60%,var(--dark-gold) 85%, var(--dark-gold) 98%, var(--gold) 100%); 
+    background: linear-gradient(to right, var(--bright-gold) -7%, var(--gold) 15%, var(--gold) 35%,var(--bright-gold) 60%,var(--gold) 75%, var(--dark-gold) 95%); 
 
     box-shadow: 0 0 15vh -5vh red;
 }
