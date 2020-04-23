@@ -1,0 +1,84 @@
+.accent,
+.accent:after,
+.accent:before {
+    display: block;
+    position: absolute;
+    width: 20vh;
+    height: 10vh;
+
+    transform-origin: 28% 50%;
+}
+
+body:active .accent,
+body:active .accent:after,
+body:active .accent:before {
+    animation-play-state: paused;
+}
+
+.accent {
+    left: 0;
+    bottom: 0;
+    animation: go-around 10s linear infinite;
+}
+
+.accent:after,
+.accent:before {
+    content: "";
+    
+    background-image: 
+        radial-gradient(circle at 5.5vh 5vh, lightgrey .6vh, black .65vh .8vh, transparent .9vh),
+        radial-gradient(5vh 1vh at 3vh 10vh, lightgrey 6vh, transparent 6.1vh),
+        radial-gradient(3vh 2vh at 2vh 6.2vh, transparent 1vh, black 1.1vh 1.5vh, transparent 1.6vh),
+        linear-gradient(160deg, transparent 40%, lightgrey 41% 59%, transparent 60%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 2vh 2vh;
+    background-position: 0 0, 5.5vh -4.9vh, 0 0, 3vh 4.8vh;
+}
+
+.accent:before {
+    animation: cut2 .4s ease-in alternate infinite;
+}
+
+.accent:after {
+    animation: cut .4s ease-in alternate infinite;
+}
+
+@keyframes cut {
+    0% { transform: rotate(-20deg) }
+    100% { transform: rotate(0deg) }
+}
+
+@keyframes cut2 {
+    0% { transform: scale(1, -1) rotate(-20deg) }
+    100% { transform: scale(1, -1) rotate(0deg) }
+}
+
+@keyframes go-around {
+    0% {
+        transform: translateX(-6vh) translateY(5vh) rotate(-90deg);
+    }
+    30% {
+        transform: translateX(-6vh) translateY(-93.5vh) rotate(-90deg);
+    }
+    32% {
+        transform: translateX(-6vh) translateY(-93.5vh) rotate(0deg);
+    }
+    48% {
+        transform: translateX(40.5vh) translateY(-93.5vh) rotate(0deg);
+    }
+    50% {
+        transform: translateX(40.5vh) translateY(-93.5vh) rotate(90deg);
+    }
+    80% {
+        transform: translateX(40.5vh) translateY(5vh) rotate(90deg);
+    }
+    82% {
+        transform: translateX(40.5vh) translateY(5vh) rotate(180deg);
+    }
+    98% {
+        transform: translateX(-6vh) translateY(5vh) rotate(180deg);
+    }
+    100% {
+        transform: translateX(-6vh) translateY(5vh) rotate(270deg);
+    }
+}
