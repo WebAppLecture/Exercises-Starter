@@ -43,30 +43,3 @@ body {
 .logo {
     text-shadow: 0 0 1vh var(--text-color);
 }
-
-.menu {
-    border: .4vh solid var(--green);
-    box-shadow: 0 0 1vh 0 var(--green),
-        0 0 1vh 0 var(--green) inset;
-}
-
-.menu > ul {
-    padding-inline-start: 0;
-
-    font-family: monospace;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 2vh;
-    font-weight: 900;
-    color: var(--green);
-    text-shadow: 0 0 1vh var(--green);
-
-    border: .4vh solid transparent;
-}
-
-.menu > ul.active {
-    border: .4vh solid var(--green);
-    box-shadow: 0 0 1vh 0 var(--green),
-        0 0 1vh 0 var(--green) inset;
-}
-
