@@ -5,5 +5,7 @@
     --darkgrey: hsla(0, 0%, 33%, .8);
 
     --ring: transparent 30%, var(--grey) 31%, var(--lightgrey) 35%, var(--mediumgrey) 39%, var(--lightgrey) 41%, var(--mediumgrey) 42%, var(--lightgrey) 43%, transparent 45%, var(--lightgrey) 47%, var(--lightgrey) 50%, transparent 52%;
-    --orbital-period: 2s;
+    --orbital-period: 8s;
+    --ellipse-r1: 120%;
+    --ellipse-r2: 50%;
 }
