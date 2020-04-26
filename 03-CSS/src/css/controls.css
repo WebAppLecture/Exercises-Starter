@@ -9,23 +9,26 @@
 }
 
 .d-pad {
-    transform-origin: 50% 120%;
-
     left: 20%;
+    margin-top: 8vh;
     width: 7vh;
     height: 9.5vh;
 }
 
+.up {
+    transform: rotate(0deg) translateY(-7vh);
+}
+
 .right {
-    transform: rotate(90deg);
+    transform: rotate(90deg) translateY(-7vh);
 }
 
 .down {
-    transform: rotate(180deg);
+    transform: rotate(180deg) translateY(-7vh);
 }
 
 .left {
-    transform: rotate(270deg);
+    transform: rotate(270deg) translateY(-7vh);
 }
 
 .big-button {   

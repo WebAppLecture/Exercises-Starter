@@ -9,10 +9,14 @@
 }
 
 .d-pad {
+    margin-top: 6vh;
+
     border-top-left-radius: 3.5vh;
     border-top-right-radius: 3.5vh;
     border-bottom-right-radius: 5vh 100%;
     border-bottom-left-radius: 5vh 100%;
+
+    transform-origin: 50% 40%;
 
     line-height: 9.5vh;
     font-family: 'Times New Roman', Times, serif;
