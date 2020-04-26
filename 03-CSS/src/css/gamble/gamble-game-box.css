@@ -1,0 +1,30 @@
+body {
+    overflow: hidden;
+    background: var(--weave-straight), var(--pooltablegreen);
+}
+
+.gameBox {
+    background: radial-gradient(circle at 80% 80%, var(--pooltablegreen) 0 100%);
+
+    border-width: 3vh 3vh;
+    border-style: solid;
+    border-color: transparent var(--highlights);
+    border-collapse: collapse;
+
+    box-shadow: 0 0 3vh 1vh black;
+}
+
+.screen {
+    border-width: 1vh;
+    border-style: solid;
+    border-radius: 2vh;
+    border-color: var(--medium-color) var(--light-color) var(--medium-color) var(--base-color);
+}
+
+.logo {
+    font-family: 'Monoton', cursive;
+    font-size: 4vh;
+    line-height: 6vh;
+    color: var(--highlights);
+    text-shadow: 0 0 2vh var(--highlights);
+}

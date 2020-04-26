@@ -1,0 +1,167 @@
+.d-pad {
+    margin-top: 4vh;
+    width: 10vh;
+    height: 11.8vh;
+
+    --bottle-label:
+        radial-gradient(3vh 2vh at 5vh 1vh, var(--label) .2vh, var(--label-fade) .7vh, transparent .8vh)                                                0 4vh / 10vh 2vh,
+        linear-gradient(to right, transparent 3.1vh, var(--label-fade) 3.2vh, var(--label) 3.7vh 6.3vh, var(--label-fade) 6.8vh, transparent 6.9vh)     0 8vh / 10vh 2vh,
+        radial-gradient(ellipse at 5vh 2.9vh, var(--label) 1.9vh, var(--label-fade) 2.4vh, transparent 2.5vh)                                           0 6vh / 10vh 2vh,
+        radial-gradient(ellipse at 5vh -.92vh, var(--label) 1.9vh, var(--label-fade) 2.4vh, transparent 2.55vh)                                         0 9.9vh / 10vh 2vh;
+
+    --bottle-cap: 
+        radial-gradient(3vh 1.2vh at 5vh 1vh, var(--cap) .4vh, var(--dark-cap) .9vh, transparent 1vh)                               0vh 0vh / 10vh 2vh,
+        linear-gradient(to right, transparent 4vh, var(--dark-cap) 4.1vh, var(--cap) 5vh, var(--dark-cap) 5.9vh, transparent 6vh)   0 1vh / 10vh .5vh,
+        radial-gradient(3vh 1.2vh at 5vh 1vh, var(--cap), var(--dark-cap) .9vh, transparent 1vh)                                    0vh .5vh / 10vh 2vh;
+
+    --bottle-shape:
+        linear-gradient(to right, transparent 4.2vh, var(--dark-bottle) 4.3vh, var(--bottle) 4.95vh, var(--dark-bottle) 5.7vh, transparent 5.8vh)       0 1vh / 10vh 2vh,
+        radial-gradient(circle at 3.8vh 0, transparent 3vh, var(--dark-bottle) 3.1vh, var(--bottle) 3.7vh)                                              4.95vh 3vh / 10vh 2vh,
+        radial-gradient(circle at 6.2vh 0, transparent 3vh, var(--dark-bottle) 3.1vh, var(--bottle) 3.7vh)                                              -5vh 3vh / 10vh 2vh, 
+        radial-gradient(circle at 7.5vh 2vh, var(--bottle) 1.8vh, var(--dark-bottle) 2.4vh, transparent 2.5vh)                                          -2.6vh 5vh / 10vh 2vh,
+        linear-gradient(to right, transparent 2.4vh, var(--dark-bottle) 2.5vh, var(--bottle) 3.3vh 6.8vh, var(--dark-bottle) 7.4vh, transparent 7.5vh)  0 7vh / 10vh 2vh,
+        linear-gradient(to right, transparent 2.4vh, var(--dark-bottle) 2.5vh, var(--bottle) 3.3vh 6.8vh, var(--dark-bottle) 7.4vh, transparent 7.5vh)  0 9vh / 10vh 2vh,
+        radial-gradient(ellipse at 2.5vh 2vh, var(--dark-bottle) 1vh, var(--bottle) 1.6vh 2.4vh, transparent 2.5vh)                                     2.5vh 9vh / 10vh 2vh,
+        radial-gradient(ellipse at 2.5vh 0, var(--darkest-bottle) 1vh, var(--dark-bottle) 1.6vh 2.4vh, transparent 2.5vh)                               2.5vh 11vh / 10vh 2vh;
+
+    background:
+        var(--bottle-label),
+        var(--bottle-cap),
+        var(--bottle-shape),
+        radial-gradient(ellipse closest-side, hsl(0, 0%, 0%, .5), transparent);
+        
+    background-blend-mode: normal;
+
+    background-repeat: no-repeat;
+
+    transform-origin: 50% 60%;
+
+    font-size: 5vh;
+    text-align: center;
+    line-height: 19.5vh;
+
+}
+
+.d-pad:active {
+    animation-timing-function: ease-in-out;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+}
+
+.up:active {
+    animation-name: up-rotation; 
+}
+
+@keyframes up-rotation {
+    100% { transform: rotate(0deg) translateY(-7vh) rotate(360deg); }
+}
+
+.right:active {
+    animation-name: right-rotation;
+}
+
+@keyframes right-rotation {
+    100% { transform: rotate(90deg) translateY(-7vh) rotate(360deg); }
+}
+
+.down:active {
+    animation-name: down-rotation;
+}
+
+@keyframes down-rotation {
+    100% { transform: rotate(180deg) translateY(-7vh) rotate(360deg); }
+}
+
+.left:active {
+    animation-name: left-rotation;
+}
+
+@keyframes left-rotation {
+    100% { transform: rotate(270deg) translateY(-7vh) rotate(360deg); }
+}
+
+.big-button,
+.reset::after,
+.skin-change > div {
+    width: 8vh;
+    height: 8vh;
+
+    --stripe: transparent 41%, var(--chip-dark) 42% 45%, transparent 46% 54%, var(--chip-dark) 55% 58%, transparent 59%;
+    --diagonal-stripe: transparent 43%, var(--chip-dark) 44% 46%, transparent 47% 53%, var(--chip-dark) 54% 56%, transparent 57%;
+    --dot:  var(--chip-light) 2%, var(--chip-dark) 3% 7%, transparent 4%;
+
+    background: 
+        radial-gradient(circle at 50% 6%, var(--dot)),
+        radial-gradient(circle at 50% 94%, var(--dot)),
+        radial-gradient(circle at 6% 50%, var(--dot)),
+        radial-gradient(circle at 94% 50%, var(--dot)),
+        radial-gradient(circle at 18.8% 18.8%, var(--dot)),
+        radial-gradient(circle at 81.2% 81.2%, var(--dot)),
+        radial-gradient(circle at 18.8% 81.2%, var(--dot)),
+        radial-gradient(circle at 81.2% 18.8%, var(--dot)),
+        linear-gradient(var(--stripe)),
+        linear-gradient(90deg, var(--stripe)),
+        linear-gradient(45deg, var(--diagonal-stripe)),
+        linear-gradient(135deg, var(--diagonal-stripe)),
+        radial-gradient(var(--chip-dark) 47%, transparent 48% 51%,var(--chip-dark) 52% 56%, transparent 57%),
+        radial-gradient( var(--chip-light),  var(--chip-light));
+
+    box-shadow: 0 0 1vh .2vh black;
+
+    font-size: 5vh;
+    line-height: 8vh;
+    text-align: center;
+    color: black;
+    
+    border-radius: 50%;
+
+    transition: .3s;
+}
+
+.reset {
+    top: 1vh;
+    right: 5vh;
+    visibility: hidden;
+}
+
+.reset::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    visibility: visible;
+    content: "X";
+}
+
+.skin-change {
+    bottom: 0vh;
+    transform: rotate(20deg);
+}
+
+.previous {
+    transform: rotate(-22deg);
+}
+
+.next {
+    transform: rotate(-18deg);
+    margin-left: -3vh;
+}
+
+.big-button:active,
+.reset:active,
+.skin-change > div:active {
+    animation: shake .2s linear infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
