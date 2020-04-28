@@ -1,0 +1,212 @@
+.d-pad,
+.big-button,
+.skin-change > div {
+    height: 10vh;
+    width: 10vh; 
+    /* Border */
+    border-radius: 50%;
+    /* Hintergrund */
+    background-image: 
+        radial-gradient(100% 30% at 50% 50%, var(--gear-tooth)),
+        radial-gradient(30% 100% at 50% 50%, var(--gear-tooth)),
+        radial-gradient(rgb(109, 49, 0) 10%, transparent 70%);
+    /* Text */
+
+    color: transparent;
+    text-align: center;   
+}
+
+.skin-change > div {
+    height: 6vh;
+    width: 6vh;
+
+    font-size: 2vh;
+    text-shadow: 0 0 .5vh black;
+    line-height: 2vh;
+}
+
+.A,
+.previous {
+    left: 77%;
+    animation: rotate 5s normal linear infinite;
+}
+
+.next {
+    margin-left: -1vh;
+    animation: rotate-offset 5s reverse linear infinite;
+}
+
+.B {
+    left: 61%;
+    margin-top: 6.9vh;
+    animation: rotate 5s reverse linear infinite;
+}
+
+.controls > div:active::after,
+.skin-change > div:active::after {
+    box-shadow: 0 0 4vh 0 yellow,
+        0 0 2vh 0 yellow inset;
+}
+
+.d-pad::before,
+.big-button::before,
+.skin-change > div::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+
+    background: 
+        radial-gradient(
+            black 13%, 
+            lightgrey 14% 27%, 
+            grey 28%, 
+            darkgrey 32% 40%, 
+            grey 44%, 
+            lightgrey 45% 51%, 
+            transparent 52%
+        ),
+        radial-gradient(100% 30% at 50% 50%, var(--gear-tooth)),
+        radial-gradient(30% 100% at 50% 50%, var(--gear-tooth));
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+.d-pad::after,
+.big-button::after,
+.previous::after,
+.next::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: "^";
+
+    color: darkred;
+    text-shadow: 0 0 .5vh darkred;
+
+    border-radius: 50%;
+
+    background: 
+        radial-gradient(transparent 12%, darkgrey 13% 19%, grey 20%, transparent 22%),
+        linear-gradient(30deg, var(--hex-color)) var(--hex-attributes),
+        linear-gradient(150deg, var(--hex-color)) var(--hex-attributes),
+        linear-gradient(210deg, var(--hex-color)) var(--hex-attributes),
+        linear-gradient(330deg, var(--hex-color)) var(--hex-attributes),
+        radial-gradient(grey 5%, #444 10%, transparent 10%),
+        linear-gradient(#444 0% 100%) var(--hex-attributes),
+        linear-gradient(grey 0% 100%) 50% 50% / 20% 20% no-repeat;
+
+    animation: rotate 5s reverse linear infinite;
+}
+
+.big-button {
+    font-size: 2vh;
+    text-shadow: 0 0 1vh black;
+}
+
+.A::after,
+.B::after {
+    font-size: 3vh;
+    line-height: 2.5vh;
+}
+
+.A::after {
+    content: "A";
+}
+
+.B::after {
+    content: "B";
+    animation: rotate 5s linear infinite;
+}
+
+.left::after,
+.right::after,
+.next::after {
+    animation: rotate-offset-reverse 5s reverse linear infinite;
+}
+
+.previous::after {
+    content: "<";
+}
+
+.next::after {
+    content: ">";
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+
+@keyframes rotate-offset {
+    0% { transform: rotate(22.5deg);}
+    100% { transform: rotate(382.5deg);}
+}
+
+@keyframes rotate-offset-reverse {
+    0% { transform: rotate(-22.5deg);}
+    100% { transform: rotate(-382.5deg);}
+}
+
+.d-pad {
+    height: 11.5vh;
+    width: 11.5vh;
+
+    left: 8vh;
+
+    font-size: 4vh;
+    text-shadow: 0 0 1vh black;
+
+    transform-origin: 50% 50%;
+    animation-timing-function: linear;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+.up,
+.down {
+    animation-direction: normal;
+}
+
+.left,
+.right {
+    animation-direction: reverse;
+}
+
+.up{
+    animation-name: up-rotation; 
+}
+
+@keyframes up-rotation {
+    100% { transform: rotate(0deg) translateY(-7vh) rotate(360deg); }
+}
+
+.right {
+    animation-name: right-rotation;
+}
+
+@keyframes right-rotation {
+    0% { transform: rotate(90deg) translateY(-7vh) rotate(22.5deg); }
+    100% { transform: rotate(90deg) translateY(-7vh) rotate(382.5deg); }
+}
+
+.down {
+    animation-name: down-rotation;
+}
+
+@keyframes down-rotation {
+    100% { transform: rotate(180deg) translateY(-7vh) rotate(360deg); }
+}
+
+.left {
+    animation-name: left-rotation;
+}
+
+@keyframes left-rotation {
+    0% { transform: rotate(270deg) translateY(-7vh) rotate(22.5deg); }
+    100% { transform: rotate(270deg) translateY(-7vh) rotate(382.5deg); }
+}

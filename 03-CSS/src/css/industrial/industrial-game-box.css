@@ -1,0 +1,113 @@
+body {
+    overflow: hidden;
+    font-family: 'Allerta Stencil', sans-serif;
+    background: black;
+}
+
+.gameBox {
+    --width: 5vh;
+    --height: calc(1.47 * var(--width));
+    --wire1-start: 75.5%;
+    --wire1-end: calc(var(--wire1-start) + 3.5%);
+    --wire-vertical-offset: calc(-.06 * var(--width));
+
+    --chain-link: 
+        linear-gradient(45deg, transparent calc(var(--wire1-start) - 1%), darkgrey var(--wire1-start), lightgrey, grey var(--wire1-end), transparent calc(var(--wire1-end) + 1%)) 0 calc(-1 * var(--wire-vertical-offset)),
+        radial-gradient(var(--height) var(--height) at -4% 50%, transparent 5%, grey 6%, lightgrey, darkgrey 11%, transparent 12%) calc(var(--width) / 2) calc(var(--height) / -2),
+        linear-gradient(225deg, transparent calc(var(--wire1-start) - 1%), darkgrey var(--wire1-start), lightgrey, grey var(--wire1-end), transparent calc(var(--wire1-end) + 1%)) 0 var(--wire-vertical-offset),
+        radial-gradient(var(--height) var(--height) at -4% 50%, transparent 5%, darkgrey 6%, lightgrey, grey 11%, transparent 12%),
+        radial-gradient(var(--height) var(--height) at 104% 50%, transparent 5%, grey 6%, lightgrey, darkgrey 11%, transparent 12%) calc(var(--width) / -2) calc(var(--height) / -2),
+        radial-gradient(var(--height) var(--height) at 104% 50%, transparent 5%, darkgrey 6%, lightgrey, grey 11%, transparent 12%),
+        linear-gradient(315deg, transparent calc(var(--wire1-start) - 1%), darkgrey var(--wire1-start), lightgrey, grey var(--wire1-end), transparent calc(var(--wire1-end) + 1%)) 0 calc(-1 * var(--wire-vertical-offset)),
+        linear-gradient(135deg, transparent calc(var(--wire1-start) - 1%), darkgrey var(--wire1-start), lightgrey, grey var(--wire1-end), transparent calc(var(--wire1-end) + 1%)) 0 var(--wire-vertical-offset);
+
+    background:    
+        var(--chain-link),
+        black;
+
+    background-size: var(--width) var(--height); 
+}
+
+.screen.on {
+    background-color: hsla(120, 100%, 20%, .8);
+}
+
+.gameBox,
+.screen {
+    border-radius: 2vh;
+
+    box-shadow:      
+        0 0 .25vh .33vh darkgray,
+        0 0 .25vh .66vh lightgrey,
+        0 0 0 1vh grey,
+        0 0 .5vh 1vh black,
+        0 0 .5vh 0 black inset;
+}
+
+
+.gameBox {
+    background:
+        linear-gradient(95deg, orangered , transparent 10%),
+        linear-gradient(-5deg, orangered , transparent 5%),
+        linear-gradient(-85deg, orangered , transparent 15%),
+        radial-gradient(circle at 30% 55%, orangered, transparent 20%),
+        grey;
+    box-shadow: 0 0 3vh .5vh black inset;
+}
+
+.screen {
+    box-shadow:      
+    0 0 .25vh .33vh grey,
+    0 0 .25vh .66vh darkgrey,
+    0 0 0 1vh #555,
+    0 0 .5vh 1vh rgb(109, 49, 0),
+    0 0 .5vh 0 black inset;
+}
+
+.accent {
+    display: block;
+    position: absolute;
+    left: 3vh;
+    top: 7vh;
+    width: 40vh;
+    height: 50vh;
+    background-color: red;
+    background: var(--chain-link);
+    background-size: var(--width) var(--height);
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 2vh;
+    box-shadow: 0 0 2vh 0 black inset;
+}
+
+.logo {
+    width: fit-content;
+
+    padding-left: 0;
+
+    font-size: 4vh;
+    color: darkred;
+    line-height: 5vh;
+    text-shadow: 0 0 .5vh darkred;
+
+    transform: rotate(-5deg) translate(2vh, 1vh);
+}
+
+.reset {
+    transform-origin: 50% 30%;
+    width: 10vh;
+    height: calc(0.87 * 10vh);
+
+    text-align: center;
+    font-size: 3vh;
+    line-height: 5vh;
+    color: darkred;
+    text-shadow: 0 0 .5vh darkred;
+
+    transform: translate(3vh, -1vh) rotate(5deg);
+}
+
+.reset,
+.logo {
+    z-index: 100;
+}

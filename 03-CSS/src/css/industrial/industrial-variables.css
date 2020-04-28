@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
+
+:root {
+    --gear-tooth: lightgrey 45%, darkgrey 48% 50%, transparent 51%;
+    --hex-color: grey 0% 16%, transparent 17%;
+    --hex-attributes: 50% 50% / 15% 17% no-repeat;
+}
