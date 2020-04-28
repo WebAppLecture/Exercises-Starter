@@ -1,7 +1,7 @@
 body {
     overflow: hidden;
     font-family: 'Allerta Stencil', sans-serif;
-    background: black;
+    background: linear-gradient(20deg, transparent 30%, hsla(16, 100%, 50%, .4), transparent 70%), #111;
 }
 
 .gameBox {
