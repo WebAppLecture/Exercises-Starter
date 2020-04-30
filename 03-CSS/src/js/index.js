@@ -1,7 +1,8 @@
 import { SkinChanger } from "./SkinChanger.js";
 
 let skinStyle = document.querySelector("#skin"),
-    skins = ["gold","peach","basic","win95","mech","scifi","gamble","industrial"];
+    skins = ["gold","peach","basic","win95","mech","scifi","gamble","industrial","bones"];
+
 
 window.skinChanger = new SkinChanger(skinStyle, skins, "./src/css/");
 
