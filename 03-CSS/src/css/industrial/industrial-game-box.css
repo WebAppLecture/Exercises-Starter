@@ -54,6 +54,8 @@ body {
         linear-gradient(-5deg, orangered , transparent 5%),
         linear-gradient(-85deg, orangered , transparent 15%),
         radial-gradient(circle at 30% 55%, orangered, transparent 20%),
+        radial-gradient(100% 40% at 60% 85%, #555, transparent 30%),
+        radial-gradient(100% 20% at 40% 5%, #555, transparent 20%),
         grey;
     box-shadow: 0 0 3vh .5vh black inset;
 }
