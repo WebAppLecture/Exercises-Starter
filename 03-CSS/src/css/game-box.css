@@ -64,7 +64,7 @@ body {
     max-height: 44vh;
     position: absolute;
     top: 10vh;
-    left: 9vh;
+    margin: 0 9vh;
 
     overflow-y: hidden;
 }
