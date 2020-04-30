@@ -47,21 +47,21 @@ body {
 .accent::after {
     right: 0;
     bottom: 0;
-    width: 80vh;
+    width: 100vh;
     height: 15vh;
     background:
-        radial-gradient(15vh 10vh, ivory 30%, transparent 50%) 65vh 2.5vh / 15vh 10vh no-repeat, 
-        radial-gradient(10vh 10vh, ivory 20%, burlywood 50%, transparent 51% ) 70vh 0 / 10vh 10vh no-repeat,
-        radial-gradient(10vh 10vh, ivory 20%, burlywood 50%, transparent 51% ) 70vh 5vh / 10vh 10vh no-repeat,
+        radial-gradient(15vh 10vh, ivory 30%, transparent 50%) 85vh 2.5vh / 15vh 10vh no-repeat, 
+        radial-gradient(10vh 10vh, ivory 20%, burlywood 50%, transparent 51% ) 90vh 0 / 10vh 10vh no-repeat,
+        radial-gradient(10vh 10vh, ivory 20%, burlywood 50%, transparent 51% ) 90vh 5vh / 10vh 10vh no-repeat,
         radial-gradient(15vh 10vh, ivory 30%, transparent 50%) 0vh 2.5vh / 15vh 10vh no-repeat, 
         radial-gradient(10vh 10vh, ivory 20%, burlywood 50%, transparent 51% ) 0 0 / 10vh 10vh no-repeat,
         radial-gradient(10vh 10vh, ivory 20%, burlywood 50%, transparent 51% ) 0 5vh / 10vh 10vh no-repeat,
 
-        radial-gradient(66vh 5vh at 50% 0, transparent 50%, burlywood 52%, ivory) 8vh 1.5vh / 66vh 6vh no-repeat,
-        radial-gradient(66vh 5vh at 50% 100%, transparent 50%, burlywood 52%, ivory) 8vh 7.3vh / 66vh 6vh no-repeat;
+        radial-gradient(86vh 5vh at 50% 0, transparent 50%, burlywood 52%, ivory) 8vh 1.5vh / 86vh 6vh no-repeat,
+        radial-gradient(86vh 5vh at 50% 100%, transparent 50%, burlywood 52%, ivory) 8vh 7.3vh / 86vh 6vh no-repeat;
 
     z-index: -1;
-    transform: translateY(-13vh) rotate(20deg);
+    transform: translateX(10vh) translateY(-28vh) rotate(20deg);
 }
 
 .accent::after {
