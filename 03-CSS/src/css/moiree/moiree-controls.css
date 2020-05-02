@@ -1,0 +1,59 @@
+.controls > *,
+.skin-change > div,
+.reset::after {
+    background: hsla(0, 0%, 0%, .8);
+
+    box-shadow: 0 0 3vh 0 var(--bg-color);
+
+    font-size: 6vh;
+    text-align: center;
+    line-height: 6.5vh;
+    color: black;
+    text-shadow: 0 0 2vh var(--text-color);
+
+    border-radius: 50%;
+}
+
+.d-pad {
+    width: 7vh;
+    height: 7vh;
+    text-shadow: 0 0 1vh var(--text-color);
+    transform-origin: 50% 40%;
+}
+
+.skin-change {
+    position: absolute;
+    left: 4vh;
+    bottom: 3vh;
+}
+
+.skin-change > div {
+    width: 5vh;
+    height: 5vh;
+
+    line-height: 5.5vh;
+}
+
+.reset {
+    visibility: hidden;
+}
+
+.reset::after {
+    visibility: visible;
+    display: block;
+    position: absolute;
+    content: "X";
+    top: 0;
+    left: 0;
+    width: 5vh;
+    height: 5vh;
+
+    font-size: 5vh;
+    line-height: 5vh;
+}
+
+.controls > div:active,
+.skin-change > div:active,
+.reset:active::after {
+    color: var(--text-active-color);
+}

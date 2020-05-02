@@ -1,0 +1,98 @@
+body {
+    overflow: hidden;
+
+    background: 
+        repeating-linear-gradient(var(--gradient)) 0 .66vh,
+        repeating-linear-gradient(60deg, var(--gradient)),
+        repeating-linear-gradient(-240deg, var(--gradient)),
+        var(--bg-color);
+    width: 100%;
+    height: 100%;
+}
+
+body::after,
+.gameBox::after {
+    display: block;
+    position: absolute;
+    content: "";
+    top: calc(.65vh - 100%);
+    left: calc(-.4vh - 100%);
+    width: 300%;
+    height: 300%;
+
+    transform-origin: 50% 50%;
+}
+
+body::after {
+    background: 
+        linear-gradient(hsla(0,0%,0%,.8) 0% 100%),
+        repeating-linear-gradient(var(--gradient)) 0 .4vh,
+        repeating-linear-gradient(60deg, var(--gradient)),
+        repeating-linear-gradient(-240deg, var(--gradient)); 
+    animation: rotate 300s linear infinite;
+}
+
+.gameBox::after {
+    background: 
+        linear-gradient(hsla(0,0%,0%,.6) 0% 100%),
+        repeating-linear-gradient(var(--gradient)) 0 .6vh,
+        repeating-linear-gradient(60deg, var(--gradient)),
+        repeating-linear-gradient(-240deg, var(--gradient)); 
+    animation: rotate 300s linear reverse infinite;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+
+.gameBox {
+
+    background: 
+    radial-gradient(8vh 8vh at 8vh 8vh, transparent 6vh, var(--border-color) 6vh 8vh, transparent 8vh) 0 0 / 8vh 8vh no-repeat,
+    radial-gradient(8vh 8vh at 0 8vh, transparent 6vh, var(--border-color) 6vh 8vh, transparent 8vh) 100% 0 / 8vh 8vh no-repeat,
+    radial-gradient(8vh 8vh at 0 0, transparent 6vh, var(--border-color) 6vh 8vh, transparent 8vh) 100% 100% / 8vh 8vh no-repeat,
+    radial-gradient(8vh 8vh at 8vh 0, transparent 6vh, var(--border-color) 6vh 8vh, transparent 8vh) 0 100% / 8vh 8vh no-repeat,
+    linear-gradient(var(--border-color) var(--pseudo-border), transparent var(--pseudo-border) calc(100% - var(--pseudo-border)), var(--border-color) calc(100% - var(--pseudo-border))),
+    linear-gradient(90deg, var(--border-color) var(--pseudo-border), transparent var(--pseudo-border) calc(100% - var(--pseudo-border)), var(--border-color) calc(100% - var(--pseudo-border))),
+    repeating-linear-gradient(var(--gradient)) 0 .9vh,
+    repeating-linear-gradient(60deg, var(--gradient)),
+    repeating-linear-gradient(-240deg, var(--gradient)),
+    var(--bg-color);
+
+    border-radius: 8vh;
+    z-index: 1;
+    overflow: hidden;
+
+    box-shadow: 0 0 5vh 0 var(--bg-color);
+}
+
+.gameBox,
+.logo,
+.controls,
+.screen,
+.controls > *,
+.skin-change,
+.skin-change > div {
+    font-family: 'Righteous', cursive;
+    z-index: 2;
+}
+
+.logo {
+    position: relative;
+    color: black;
+    text-shadow: 0 0 2vh var(--text-color);
+}
+
+.screen {
+    position: relative;
+    border-radius: 3vh;
+    
+}
+
+.screen.on {
+    background: hsla(120, 100%, 20%,.9);
+}
+
+.menu {
+    z-index: 3;
+}

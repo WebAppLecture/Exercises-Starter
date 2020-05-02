@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+:root {
+    --width: 10vw;
+    --height: 10vh;
+    --gradient: transparent 0px 3px, black 3px 6px, transparent 6px 9px;
+
+    --bg-color: yellow;
+
+    --text-color: var(--bg-color);
+    --text-active-color: hsla(60, 100%, 50%, .5);
+
+    --pseudo-border: 2vh;
+    --border-color: var(--bg-color);
+}
