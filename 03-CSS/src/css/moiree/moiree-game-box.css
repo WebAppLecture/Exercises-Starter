@@ -86,11 +86,7 @@ body::after {
 .screen {
     position: relative;
     border-radius: 3vh;
-    
-}
-
-.screen.on {
-    background: hsla(120, 100%, 20%,.9);
+    opacity: .9;
 }
 
 .menu {

@@ -9,6 +9,10 @@
 
 body {
     user-select: none;
+    margin: .5vh;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    min-height: -moz-available;
 }
 
 .centered {
@@ -17,12 +21,14 @@ body {
 
 .hidden {
     display: none;
+    list-style-type: none;
 }
 
 .gameBox {
     position: relative;
-    height: calc(100vh - 16px);
-    width: fit-content;
+    min-height: 99vh;
+    min-height: -webkit-fill-available;
+    width: max-content;
 }
 
 .logo {
@@ -46,21 +52,21 @@ body {
 
     padding: 1vh;
 
-    background: #020;
+    background-color: #020;
     color: #484;
     box-shadow: 0 0 1vh .2vh black inset;
 
-    transition: background .5s;
+    transition: background-color .5s;
 }
 
 .screen.on {
-    background: #060;
-    transition: background .5s;
+    background-color: #060;
+    transition: background-color .5s;
 }
 
 .menu {
     width: 28vh;
-    height: fit-content;
+    height: max-content;
     max-height: 44vh;
     position: absolute;
     top: 10vh;

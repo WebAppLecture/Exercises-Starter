@@ -15,7 +15,6 @@ body {
     box-shadow: 0 0 15vh -5vh red;
 }
 
-
 .logo,
 .accent {
     background-color: var(--dark-gold);
@@ -34,6 +33,44 @@ body {
 .accent:before {
     font-size: 10vh;
     content: "||||";
+}
+
+.logo:hover,
+.accent:hover {
+    animation: menace 2s cubic-bezier(0.4, 0, 1, 1) infinite;
+}
+
+@keyframes menace {
+    0% {
+        background: linear-gradient(to right, hsl(0, 100%, 40%) 0%, var(--shadow) 20%);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+    }
+    25% {
+        background: linear-gradient(to right, hsl(0, 100%, 40%) 20%, var(--shadow) 40%);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+    }
+    50% {
+        background: linear-gradient(to right, hsl(0, 100%, 40%) 40%, var(--shadow) 60%);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+    }
+    75% {
+        background: linear-gradient(to right, hsl(0, 100%, 40%) 60%, var(--shadow) 80%);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+    }
+    100% {
+        background: linear-gradient(to right, hsl(0, 100%, 40%) 80%, var(--shadow) 100%);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+    }
 }
 
 .screen {

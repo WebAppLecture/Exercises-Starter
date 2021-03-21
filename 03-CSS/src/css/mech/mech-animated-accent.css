@@ -1,22 +1,135 @@
 .gameBox {
-        
+    --blip: radial-gradient(circle at 1vh 1vh, var(--green) .1vh, transparent .4vh);
+    --bright-blip: radial-gradient(circle at 1vh 1vh, var(--green) .2vh, transparent .4vh);
+    --dimmer-blip: radial-gradient(circle at 1vh 1vh, var(--green) -1vh, transparent .4vh);
+    background: radial-gradient(
+        circle at 75% 88%, 
+        transparent 10%,
+        black 11%,
+        var(--brown) 11.2%, 
+        var(--dirty-olive) 50%, 
+        var(--brown) 100%
+    );
 }
 
 .accent {
     /* Position und Größe*/
+    position: absolute;
+    bottom: 1.8%;
+    right: 3.2%;
+    width: 20vh;
+    height: 20vh;
+
 
     /* Hintergrund */
-
+    background-color: #060;
+    background: 
+        radial-gradient(var(--green) 1%, transparent 3%, transparent 13%, var(--green) 15%, transparent 17%, transparent 38%, var(--green) 40%, transparent 42%,transparent 63%, var(--green) 65%, transparent 67%),
+        linear-gradient(to left, transparent, var(--green) 2%, transparent 4%) -9.6vh -10vh no-repeat,
+        radial-gradient(ellipse at 0% 100%, transparent 77%, var(--green)) -10vh 0 no-repeat,
+        radial-gradient(#090, #040);
     /* Border */
-
+    border-radius: 50%;
     /* Material Design */
 
     /* Animation */
-
+    animation: rotation 3s linear infinite;
     /* Z-Index */
-
+    z-index: -1;
 }
 
 @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
+@keyframes blips {
+    0% {
+        background: 
+        var(--blip) 85vh 85vh,
+        radial-gradient(
+            circle at 75% 88%, 
+            transparent 10%,
+            black 11%,
+            var(--brown) 11.2%, 
+            var(--dirty-olive) 50%, 
+            var(--brown) 100%
+        );
+    }
+    24.5% {
+        background: 
+        var(--blip) 85vh 85vh,
+        radial-gradient(
+            circle at 75% 88%, 
+            transparent 10%,
+            black 11%,
+            var(--brown) 11.2%, 
+            var(--dirty-olive) 50%, 
+            var(--brown) 100%
+        );
+    }
+    25% {
+        background: 
+        var(--bright-blip) 85vh 85vh,
+        radial-gradient(
+            circle at 75% 88%, 
+            transparent 10%,
+            black 11%,
+            var(--brown) 11.2%, 
+            var(--dirty-olive) 50%, 
+            var(--brown) 100%
+        );
+    }
+    32% {
+        background: 
+        var(--blip) 85vh 85vh,
+        radial-gradient(
+            circle at 75% 88%, 
+            transparent 10%,
+            black 11%,
+            var(--brown) 11.2%, 
+            var(--dirty-olive) 50%, 
+            var(--brown) 100%
+        );
+    }
+    50% {
+        background: 
+        var(--blip) 85vh 85vh,
+        radial-gradient(
+            circle at 75% 88%, 
+            transparent 10%,
+            black 11%,
+            var(--brown) 11.2%, 
+            var(--dirty-olive) 50%, 
+            var(--brown) 100%
+        );
+    }
+    75% {
+        background:  
+        var(--blip) 85vh 85vh,
+        radial-gradient(
+            circle at 75% 88%, 
+            transparent 10%,
+            black 11%,
+            var(--brown) 11.2%, 
+            var(--dirty-olive) 50%, 
+            var(--brown) 100%
+        );
+    }
+    100% {
+        background:  
+        var(--blip) 85vh 85vh,
+        radial-gradient(
+            circle at 75% 88%, 
+            transparent 10%,
+            black 11%,
+            var(--brown) 11.2%, 
+            var(--dirty-olive) 50%, 
+            var(--brown) 100%
+        );
+    }
 }

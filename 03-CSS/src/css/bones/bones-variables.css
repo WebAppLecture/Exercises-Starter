@@ -1,1 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+:root {
+    --dark-gold: rgb(82, 62, 22);
+    --gold: rgb(206, 168, 85);
+    --bright-gold: rgb(255, 236, 179);
+
+    --bone-light: ivory;
+    --bone-dark: burlywood;
+    --shadow: hsla(0, 0%, 0%, .5);
+    --mouth-glow: red;
+
+    --tooth-light: rgb(255, 252, 210);
+    --tooth-dark: hsl(46, 70%, 31%);
+    --tooth-font-color: orangered;
+    --text-color: red;
+    --tooth-shadow: hsla(34, 35%, 50%, 1);
+}

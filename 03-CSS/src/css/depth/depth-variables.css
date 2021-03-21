@@ -1,0 +1,14 @@
+:root {
+    --background: #444;
+    --foreground: grey;
+    --accent1: lightgrey;
+    --accent2: #666;
+    --stroke: black;
+    --glow: yellow;
+    --shadow: darkgrey;
+
+    --box-effect: 
+        linear-gradient(var(--stroke) 0% 100%) 1.8vh calc(100% - 1vh) / calc(100% - 1.8vh) .25vh no-repeat,
+        linear-gradient(150deg, transparent 0 .8vh, var(--stroke) .9vh 1vh, var(--accent1) 1.1vh 100%) 0 100% / 100% 1.1vh no-repeat,
+        linear-gradient(to right, var(--shadow), var(--accent2) 1vh 1.75vh, var(--stroke) 1.85vh) 0 0 / 2vh 100% no-repeat;
+}

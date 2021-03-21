@@ -12,21 +12,21 @@
 .next::after {
     width: 5vh;
     height: 8vh;
-    background: radial-gradient(ellipse, ivory 50%, burlywood 90%);
+    background: radial-gradient(ellipse, var(--tooth-light) 50%, var(--tooth-dark) 90%);
     margin-top: 0;
     border-top-left-radius: 10vh 20vh;
     border-top-right-radius: 10vh 20vh;
     border-bottom-right-radius: 10vh 5vh;
     border-bottom-left-radius: 10vh 5vh;
 
-    box-shadow: 0 0vh 1vh hsla(34, 35%, 50%, 1);
+    box-shadow: 0 0vh 1vh var(--tooth-shadow);
 
     text-align: center;
     line-height: 7vh;
     font-size: 5vh;
     
-    color: red;
-    text-shadow: 0 0 .5vh burlywood;
+    color: var(--text-color);
+    text-shadow: 0 0 .5vh var(--bone-dark);
 }
 
 .controls {
@@ -35,6 +35,11 @@
 
 .d-pad {
     left: 32.5%;
+}
+
+*::before,
+*::after {
+    pointer-events: none;
 }
 
 .up::before,
@@ -91,20 +96,20 @@
 .left,
 .right {
     background: 
-        radial-gradient(5vh 15vh at 50% 100%, gold 30%, goldenrod 50%, transparent 52%);
+        radial-gradient(5vh 15vh at 50% 100%, transparent 11%, var(--gold) 15% 30%,var(--bright-gold) 35%,var(--gold) 40%, var(--dark-gold) 50%, transparent 52%);
     border-radius: 0;
     box-shadow: none;
     line-height: 13vh;
     font-size: 6vh;
-    color: orangered;
+    color: var(--tooth-font-color);
 }
 
 .left {
-    transform: translateY(7vh) translateX(-4vh) rotate(270deg);
+    transform: translateY(7.5vh) translateX(-4vh) rotate(270deg);
 }
 
 .right {
-    transform: translateY(7vh) translateX(4vh) rotate(90deg);
+    transform: translateY(7.5vh) translateX(4vh) rotate(90deg);
 }
 
 .B {
@@ -127,6 +132,8 @@
     top: -.5vh;
     left: -5.2vh;
     transform: rotate(5deg);
+
+    background: linear-gradient(to right, var(--bright-gold) -7%, var(--gold) 15%, var(--gold) 35%,var(--bright-gold) 60%,var(--gold) 75%, var(--dark-gold) 95%); 
 }
 
 .skin-change {

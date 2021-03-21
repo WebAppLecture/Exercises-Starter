@@ -1,0 +1,70 @@
+.big-button {
+    border-radius: 0;
+    line-height: 9vh;
+}
+
+.A {
+    left: 76%;
+}
+
+.B {
+    margin-top: 8.7vh;
+    left: 66%;
+}
+
+.reset {
+    text-align: center;
+    font-size: 4vh;
+    
+    text-shadow: 0vh -.2vh 0 var(--accent1),
+        .3vh -.1vh 0 var(--accent2),
+        .3vh 0vh .3vh var(--stroke);
+
+    transform: translateY(-1vh) skewY(10deg);
+}
+
+.d-pad,
+.big-button {
+    background: 
+        var(--box-effect),
+        var(--background);
+    
+    border: .2vh solid var(--stroke);
+
+    text-align: center;
+    font-size: 5vh;
+    
+    text-shadow: 0vh -.2vh 0 var(--accent1),
+        .3vh -.1vh 0 var(--accent2),
+        .3vh 0vh .3vh var(--stroke);
+}
+
+.d-pad {
+    margin-top: 3vh;
+    font-size: 8vh;
+    line-height: 17vh;
+}
+
+.up {
+    transform: translateY(-5vh) skewY(10deg);
+}
+
+.right {
+    transform: translateX(7.5vh) translateY(1vh) skewY(10deg);
+}
+
+.down {
+    transform: translateY(5vh) skewY(10deg);
+}
+
+.left {
+    transform: translateX(-7.5vh) translateY(-2vh) skewY(10deg);
+}
+
+.controls > div:active {
+    color: var(--glow);
+    text-shadow: 0vh -.2vh 0 var(--accent1),
+        .3vh -.1vh 0 var(--accent2),
+        .3vh 0vh .3vh var(--stroke),
+        0 0 5vh var(--glow);
+}

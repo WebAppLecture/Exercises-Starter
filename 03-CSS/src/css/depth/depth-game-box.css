@@ -1,0 +1,61 @@
+body {
+    background: linear-gradient(5deg, var(--stroke), var(--background) 20%);
+    overflow: hidden;
+    font-family: monospace;
+}
+
+.gameBox {
+    background:
+        linear-gradient(var(--stroke) 0% 80%, transparent) 0 14% / .6% 91% no-repeat,
+        linear-gradient(var(--stroke) 0% 80%, transparent) 100% 94% / .6% 91% no-repeat,
+        linear-gradient(var(--stroke) 0% 80%, transparent) 95.2% 102% / .6% 91% no-repeat,
+        linear-gradient(170deg, var(--background) 50%, var(--stroke) 55% 60%, transparent 65%) 0 0 / 6.5% 1.8% no-repeat,
+        linear-gradient(160deg, transparent 9%, var(--stroke) 9.1% 9.2%, var(--accent2) 9.3% 80%, transparent 99.2%) 100% 0 / 5% 100% no-repeat,
+        linear-gradient(10deg, transparent 44.5%, var(--stroke) 45% 46%, var(--accent1) 46.5% 51%, var(--stroke) 51.5% 52.5%,  transparent 53%) 0 0 / 100% 9.3% no-repeat,
+        linear-gradient(10deg, transparent 7.1%,  var(--foreground) 20% 91.5%, transparent 91.6% ) 0 0 / 95% 100% no-repeat;
+    animation: skew 1s ease-out alternate infinite;
+}
+
+.menu,
+.big-button,
+.skin-change {
+    transform: skewY(10deg);
+}
+
+@keyframes skew {
+    100% { transform: rotateY(10deg);}
+}
+
+.logo {
+    transform: translateY(-.5vh) skewY(10deg) translateX(10vh);
+    text-shadow: 0vh -.2vh 0 var(--accent1),
+        .3vh -.1vh 0 var(--accent2),
+        .3vh 0vh .3vh var(--stroke);
+}
+
+.screen {
+    padding: 0vh 0vh 1vh 2vh;
+    border: .2vh solid var(--stroke);
+    box-shadow: none;
+    transform: skewY(10deg) translateX(-1vh);
+}
+
+.screen.on {
+    background: 
+    var(--box-effect),
+    #060;
+}
+
+.skin-change {
+    bottom: 12vh;
+}
+
+.skin-change > div {
+    font-size: 3vh;
+    color: transparent;
+    text-shadow: 0 0 .4vh var(--stroke);
+}
+
+.skin-change > div:active {
+    text-shadow: 0 0 .4vh var(--glow);
+}

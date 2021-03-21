@@ -8,7 +8,7 @@ window.gameEngine = new GameEngine(
 
 
 let skinStyle = document.querySelector("#skin"),
-    skins = ["gold","peach","basic","win95", "mech"];
+    skins = ["gold","peach","basic","win95", "mech","depth"];
 
 window.skinChanger = new SkinChanger(skinStyle, skins, "../03-CSS/src/css/");
 

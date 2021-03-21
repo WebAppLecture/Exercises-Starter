@@ -5,7 +5,6 @@ body {
 
 .gameBox {
     background: radial-gradient(circle at 80% 80%, var(--pooltablegreen) 0 100%);
-
     border-width: 3vh 3vh;
     border-style: solid;
     border-color: transparent var(--highlights);

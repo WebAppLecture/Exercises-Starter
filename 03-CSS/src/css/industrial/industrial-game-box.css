@@ -86,7 +86,7 @@ body {
 }
 
 .logo {
-    width: fit-content;
+    width: max-content;
 
     padding-left: 0;
 
@@ -115,4 +115,15 @@ body {
 .reset,
 .logo {
     z-index: 100;
+}
+
+.menu {
+    animation: flicker .1s linear infinite;
+}
+
+@keyframes flicker {
+    60% { transform: translate(0px, 0px); }
+    70% { transform: translate(30px, 0px); }
+    80% { transform: translate(-30px, 0px); }
+    90% { transform: translate(0px, 0px); }
 }
