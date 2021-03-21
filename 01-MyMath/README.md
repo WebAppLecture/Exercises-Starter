@@ -35,9 +35,13 @@ Kontrolliere wieder in der Konsole deinen Fortschritt. `a = new MyMath(); a.add(
 
 Implementiere die Potenzfunktion: `pow()`
 
-Verwende intern nicht die in Javascript eingebaute `Math.pow()` Methode, du kannst aber mithilfe dieser in der Konsole dein Ergebniss kontrollieren.
+Verwende dabei nicht die in Javascript eingebaute `Math.pow()` Methode oder den `**` Operator, du kannst aber mithilfe dieser dein Ergebniss kontrollieren.
+Eine For-Schleife könnte hier hilfreich sein. 
 
-Eine For-Schleife könnte hier hilfreich sein. Beachte, dass diese Lösung keine negativen Potenzen (Wurzeln) vorsieht. Überprüfe deswegen ob die übergebene Potenz positiv ist.
+Beachte, dass diese Lösung keine negativen Potenzen oder Brüche vorsieht. Überprüfe deswegen ob die übergebene Potenz positiv und ganzzahlig ist.
+
+Sobald dies funktioniert, schreibe den Code so um, dass er auch negative Potenzen berechnen kann.
+Errinnerung: `n^-x = 1 / n^x`
 
 ## 04. Fakultät ##
 
@@ -57,9 +61,23 @@ Chaining erfordert einfach nur, dass jede (chainable) Funktion einer Klasse die 
 
 Spiel ein wenig mit den neuen Funktionalitäten in der Konsole.
 
+## 06. (BONUS) Daten parsen ##
 
+#### Theorie ####
+Im Unfang eines Kalenderprogramms wollen wir aus beliebigen Uhrzeiten einen wiederkehrenden Termin im **iCal** Format (verwendet von Google Kalender, Microsoft Outlook, macOS/iOS Kalender) generieren.
 
+**iCal**'s Terminwiederholungssyntax erlaubt aber nicht einfach die Zeiten zu hinterlegen. Statt dessen müssen diese in **byHour** und **byMinute** umgeformt werden. 
 
+`[08:15, 09:15]` wird `byHour: [8,9], byMinute: [15]`
 
+Was geschieht bei minimal komplexeren Zeiten?
+`[08:00, 09:30]` wird erst einmal `byHour: [8,9], byMinute: [0,30]`
 
+Dies beschreibt aber `[8:00, 8:30, 9:00, 9:30]` da einfach alle Kombinationen verwendet werden.
+Deswegen erlaubt uns **bySetPos** die gewollten Zeiten aus diesem Array zu filtern.
+Es ergibt sich `bySetPos: [1,4]`, da wir den ersten (`8:00`) und den vierten (`9:30`) Eintrag benötigen. 
+(**bySetPos ist 1-based nicht 0-based!**)
 
+#### Aufgabe ####
+
+Schreibe zwei Funktionen, eine die ein Array von Zeiten in byHour, byMinute, bySetPos umformt, und eine zweite die diese in das Array zurückführt.
