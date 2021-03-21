@@ -34,6 +34,7 @@ Betrifft: **[calculator.html](calculator.html)**, **[index.js](index.js)**
 
 Heute kümmert ihr euch selbst darum dass euer Javascript auch geladen wird.
 * Fügt im HTMl eine `<script>` Tag ein
+    * plaziert den Tag nach dem body um Ladezeiten zu verbessern
     * `type='module'` da wir Javascript in ES6 Modulen schreiben
     * `src='./index.js'`, Relativpfad zu unserem Javascript
 * importiert `Calculator` in `index.js`
@@ -41,8 +42,9 @@ Heute kümmert ihr euch selbst darum dass euer Javascript auch geladen wird.
     * `from './Calculator.js'` Relativpfad zum Modul. **VSC's Autoimport lässt das `.js` weg, achtet immer darauf dass die Endung nicht fehlt**
 * fügt `Calculator` dem globalen Namespace hinzu, damit wir aus der Konsole darauf zugreifen können.
     * `window.Calculator = Calculator;`
+    * diese Praktik ist fürs Debuggen und Ausprobieren praktisch, in produktiven Systemen ist das unüblich
 
-## 04 Autostart und querySelector ##
+## 03 Autostart und querySelector ##
 
 Betrifft: **[Calculator.js](Calculator.js)**, **[index.js](index.js)**
 
@@ -56,11 +58,12 @@ Der Konstruktor von `Calculator` erwartet aber drei Parameter: `numpad`, `output
 * Verwendet den `document.querySelector()` um diese Referenzen zu erstellen und dem Konstruktor zu übergeben
     * `#selector` selektiert das Element mit `id="selector"`
     * `.selector` selektiert das Element mir `class="selector"`
+* man könnte auch mit `document.querySelectorAll()` alle Tasten selektieren, wir brauchen allerdings später eine Referenz zum `numpad` selbst.
 
 Speichert im Konstruktor die übergebenen Referenzen mit `this` als Attribute der Instanz
 * z.B. `this.numPad = numPad;`
 
-## 05 Ziffernblock Interaktion ##
+## 04 Ziffernblock Interaktion ##
 
 Betrifft: **[Calculator.js](Calculator.js)**
 
@@ -84,9 +87,8 @@ Anonyme Funktionen:
 * Fat Arrow Syntax: `event => this.onButtonClick(event)`
 
 Referenz: `this.onButtonClick.bind(this)`
-* `bind(this)` stellt sicher, dass Aufrufe von `this` innerhalb von `onButtonClick` sich auf die Instanz von `Calculator` beziehen und nicht auf den Listener
-
-## 06 (BONUS) Ziffernblock erweitert ##
+* `bind(this)` stellt sicher, dass Aufrufe von `this` innerhalb von `onButtonClick` sich auf die Instanz von `Calculator` beziehen und nicht auf den Button selbst
+## 05 (BONUS) Ziffernblock erweitert ##
 
 Betrifft: **[Calculator.js](Calculator.js)**
 
@@ -96,21 +98,21 @@ Erweitere das NumPad (das layout kannst du dir aussuchen)
 * Eine Taste für jede Rechenart die ihr gestern in `MyMath` implementiert habt
 * Zusätzlich eine Taste `AC`, die alle Eingaben zurücksetzt.
 
-Schau dir auch die CSS Regel `.flex-4` in **[calculator.css](calculator.css)** an. Diese kannst du verwenden um das Numpad ohne `<br>` in Zeilen zu packen.
+Schau dir auch die CSS Regel `.flex-4` in **[calculator.css](calculator.css)** an. Gib dem Numpad zusätzlich diese Klasse (ohne `.`, vgl. querySelector) um die Tasten ohne `<br>` in Zeilen zu packen.
 
-## 07 (BONUS) Taschenrechner ##
+## 06 (BONUS) Taschenrechner ##
 
-Füge die din `MyMath` implementierten Rechenoperationen hinzu.
+Füge die in `MyMath` implementierten Rechenoperationen hinzu.
 
 Implementiere folgende Funktionalität:
 
 * Der erste Klick auf eine Zahl erzeugt eine Instanz von Number mit diesem Wert.
-* Die Abfolge von Klicks auf eine Rechenoperation und dann eine Zahl soll die entsprechende Rechenoperation auf dieser Instanz ausführen.
-* Der jeweilige Wert der Instanz soll in mit `printSolution(string)` in der `#solution` textarea angezeigt werden.
+* Die Abfolge von Klicks auf eine Rechenoperation und dann eine Zahl soll die entsprechende Rechenoperation auf der zuvor erstellten Instanz ausführen.
+* Der jeweilige Wert der Instanz soll mit `printSolution(string)` in der `#solution` textarea angezeigt werden.
 * Der gesamte Rechenweg soll mit `print(string)` in der `#calculation` textarea angezeigt werden
-* Ein Klick auf `AC` löst `clear()` auf, das beide textareas leert
+* Ein Klick auf `AC` löst `clear()` aus, das beide textareas leert
 
-## 08 (BONUS) Taschenrechner++ ##
+## 07 (BONUS) Taschenrechner++ ##
 
 Dir ist echt langweilig, und du brauchst eine Herausforderung.
 
