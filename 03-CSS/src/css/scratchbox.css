@@ -1,0 +1,131 @@
+
+body {
+    background: 
+        radial-gradient(2vh 1vh at 5vh 0, transparent .9vh, hsla(0, 0%, 0%, .7) 1vh, hsla(240, 100%, 50%, .5) 1.5vh, hsla(240, 100%, 50%, .5) 4.7vh, hsla(195, 53%, 79%, .5) 5vh, transparent 5.1vh),
+        radial-gradient(1.5vh 1vh at 5vh 0, red .2vh, hsla(0, 0%, 0%, .8) 1vh, transparent 1.1vh) ,
+        radial-gradient(hsla(0, 100%, 50%, .3), hsla(0, 100%, 27%, 1) 3vh, transparent 3.1vh),
+        linear-gradient(to right, darkred, red 1vh, black 2vh, transparent 2.1vh),
+        radial-gradient(2vh 1vh at 5vh 10vh, hsla(0, 0%, 0%, .7) 1vh, hsla(240, 100%, 50%, .5) 1.5vh, hsla(240, 100%, 50%, .5) 4.5vh, hsla(240, 100%, 27%, .5) 5vh, transparent 5.1vh);
+    background-size: 10vh 10vh;
+    background-position: 5vh 3.98vh, 5vh 6.9vh, 5vh 5vh, 9vh 0,  5vh -6vh;
+    background-repeat: repeat;
+
+    animation: pump2 5s ease-in-out alternate infinite;
+}
+
+
+@keyframes pump2 {
+    0% {
+        background-position: 5vh 2.98vh, 5vh 6.9vh, 5vh 5vh, 9vh 0,  5vh -7vh;
+    }
+    100% {
+        background-position: 5vh 5.98vh, 5vh 6.9vh, 5vh 5vh, 9vh 0,  5vh -4vh;
+    }
+}
+
+body {
+    background:   
+        linear-gradient(45deg, transparent 40%, darkred 41%, red 50%, black 59%, transparent 60%),
+        linear-gradient(135deg, transparent 40%, darkred 41%, red 50%, black 59%, transparent 60%),
+        radial-gradient(darkred, orange) -5vh -5vh;
+    background-size: 10vh 10vh;
+    background-repeat: round;
+
+    
+    --weave-round: radial-gradient(farthest-side at 100% 100%, var(--circle)),
+    linear-gradient(45deg, transparent 40%, var(--base-color) 41%, var(--base-color) 46%, var(--medium-color) 46.1%, var(--medium-color) 53.9%, var(--base-color) 54%, var(--base-color) 59%, transparent 60%),
+    radial-gradient(farthest-side at 0 0, var(--circle)),
+    radial-gradient(farthest-side at 100% 0, var(--circle)),
+    linear-gradient(135deg, transparent 40%,var(--light-color) 41%,var(--light-color) 46%, var(--medium-color) 46.1%, var(--medium-color) 53.9%, var(--dark-color) 54%, var(--dark-color) 59%, transparent 60%),
+    radial-gradient(farthest-side at 0 100%, var(--circle)), 
+    var(--wood-alt),
+    radial-gradient(var(--medium-color), var(--medium-color));
+
+    background:
+    linear-gradient(to bottom, red 10%, transparent 11%) 1vh 0 / 8vh 10vh no-repeat,
+    linear-gradient(240deg, white 36%, red 37% 47%, transparent 48%) 0 0 / 5vh 10vh no-repeat,
+    linear-gradient(-240deg, white 36%, red 37% 47%, transparent 48%) 4.9vh 0 / 5vh 10vh no-repeat;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+body {
+    --tooth-horizontal: radial-gradient(8vh 2.4vh at 50% 50%, var(--gear-tooth));
+    --tooth-vertical: radial-gradient(2.4vh 8vh at 50% 50%, var(--gear-tooth));
+
+    background: 
+    var(--tooth-vertical) 0 0 / 10vh 10vh,
+    var(--tooth-horizontal) 0 0 / 10vh 10vh,
+    var(--tooth-vertical) 7vh -1vh / 10vh 10vh,
+    var(--tooth-horizontal) 7vh -1vh / 10vh 10vh,
+    var(--tooth-vertical) 0 5vh / 10vh 10vh,
+    var(--tooth-horizontal) 0 5vh / 10vh 10vh,
+    linear-gradient(lightgrey 0% 100%);
+
+    background-size: 20vh 20vh;
+    background-repeat: no-repeat;
+}
+
+body::after {
+    display: block;
+    position: absolute;
+    top: -50%;
+    width: 300%;
+    height: 200%;
+    content: "";
+    transform-origin: 10vh 5vh;
+    transform: rotate(45deg);
+
+    background: 
+        radial-gradient(8vh 2.4vh at 50% 50%, var(--gear-tooth)) 5vh 0 / 10vh 10vh,
+        radial-gradient(2.4vh 8vh at 50% 50%, var(--gear-tooth)) 5vh 0 / 10vh 10vh,
+        radial-gradient(8vh 2.4vh at 50% 50%, var(--gear-tooth)) 0 5vh / 10vh 10vh,
+        radial-gradient(2.4vh 8vh at 50% 50%, var(--gear-tooth)) 0 5vh / 10vh 10vh;
+    background-size: 20vh 20vh;
+    background-repeat: no-repeat;
+}
+
+no-class {
+    background: radial-gradient(
+        black .9vh, 
+        lightgrey 1vh 1.4vh, 
+        grey 1.5vh, 
+        darkgrey 1.8vh 2.2vh, 
+        grey 2.5vh, 
+        lightgrey 2.6vh 3vh, 
+        transparent 3.1vh
+    ) 5vh 0;
+}
+
+body {
+    overflow: hidden;
+
+    --width: 10vw;
+    --height: 10vh;
+    --gradient: radial-gradient(circle at 50% 50%, transparent 2px, hsl(195, 53%, 60%) 2px 5px, transparent 5px) 0 0 / 10px 10px;
+    background: var(--gradient),
+        lightblue;
+    width: 100%;
+    height: 100%;
+}
+
+body::after {
+    display: block;
+    position: absolute;
+    content: "";
+    top: calc(.65vh - 100%);
+    left: calc(-.4vh - 100%);
+    width: 300%;
+    height: 300%;
+
+
+    transform-origin: 50% 50%;
+    
+    background: var(--gradient);
+
+    animation: rotate 300s linear infinite;
+}
+
+@keyframes pulse {
+    0% { transform: rotate(105deg)}
+    100% { transform: rotate(120deg); }
+}

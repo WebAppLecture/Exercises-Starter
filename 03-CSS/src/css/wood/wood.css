@@ -1,0 +1,48 @@
+@import url(./wood-variables.css);
+@import url(./wood-controls.css);
+@import url(./wood-weave.css);
+
+
+.gameBox {
+    background: 
+        radial-gradient(circle at 80% 80%, hsl(120, 100%, 10%) 0 100%);
+
+    border-width: 3vh 3vh;
+    border-style: solid;
+    border-color: transparent goldenrod;
+    border-collapse: collapse;
+
+}
+
+
+.screen {
+    border-width: 1vh;
+    border-style: solid;
+    border-radius: var(--border);
+    border-color: var(--medium-color) var(--light-color) var(--medium-color) var(--base-color);
+}
+
+.noclass {
+    border-image-source: repeating-linear-gradient(
+        transparent,
+        var(--light-color) 2.9vh,
+        var(--medium-color) 3vh,
+        var(--medium-color) 3.7vh,
+        var(--base-color) 3.8vh,
+        var(--base-color) 4.7vh
+    );
+    border-image-repeat: round;
+    border-image-slice: 3%;
+}
+
+.logo {
+   
+
+    font-family: 'Monoton', cursive;
+    font-size: 4vh;
+    line-height: 6vh;
+    color: goldenrod;
+    text-shadow: 0 0 var(--border) goldenrod;
+}
+
+

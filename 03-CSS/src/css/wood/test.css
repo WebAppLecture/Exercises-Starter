@@ -1,0 +1,21 @@
+body:hover {
+    --color: hsla(0, 0%, 0%, 1);
+    --hue: 0;
+    --saturation: 0%;
+    --light: 0%;
+    --alpha: 1;
+    --light-spread: 20%;
+    --base-color: hsla(var(--hue), var(--saturation), var(--light), var(--alpha));
+    --light-color: hsla(var(--hue), var(--saturation), calc(var(--light) + 2 * var(--light-spread)), var(--alpha));
+    --medium-color: hsla(var(--hue), var(--saturation), calc(var(--light) + var(--light-spread)), var(--alpha));
+    --dark-color: hsla(var(--hue), var(--saturation), calc(var(--light) - var(--light-spread)), var(--alpha));
+
+    background: 
+        radial-gradient(circle at 10vh 10vh, transparent 4.5vh, var(--dark-color) 4.6vh,var(--light-color) 5vh, var(--base-color) 5.4vh, transparent 5.5vh), 
+        linear-gradient(45deg, transparent 40%, var(--base-color) 41%, var(--base-color) 46%, var(--medium-color) 46.1%, var(--medium-color) 52.9%, var(--base-color) 53%, var(--base-color) 59%, transparent 60%),
+        radial-gradient(circle at 0 0, transparent 4.5vh, var(--base-color) 4.6vh,var(--light-color) 5vh, var(--dark-color) 5.4vh, transparent 5.5vh),
+        linear-gradient(135deg, transparent 40%,var(--light-color) 41%,var(--light-color) 46%, var(--medium-color) 46.1%, var(--medium-color) 52.9%, var(--dark-color) 53%, var(--dark-color) 59%, transparent 60%),
+        radial-gradient(var(--medium-color), var(--medium-color)) -5vh -5vh;
+    background-size: 10vh 10vh;
+    background-repeat: round;
+}

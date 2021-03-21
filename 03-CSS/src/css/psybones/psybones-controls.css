@@ -1,0 +1,168 @@
+.big-button,
+.big-button::before,
+.skin-change > div,
+.previous::before,
+.next::after,
+.accent,
+.accent::before,
+.accent::after {
+    width: 5vh;
+    height: 8vh;
+    background: radial-gradient(ellipse, var(--tooth-light) 50%, var(--tooth-dark) 90%);
+    margin-top: 0;
+    border-top-left-radius: 10vh 20vh;
+    border-top-right-radius: 10vh 20vh;
+    border-bottom-right-radius: 10vh 5vh;
+    border-bottom-left-radius: 10vh 5vh;
+
+    box-shadow: 0 0vh 1vh var(--tooth-shadow);
+
+    text-align: center;
+    line-height: 7vh;
+    font-size: 5vh;
+    
+    color: var(--tooth-font-color);
+    text-shadow: 0 0 .5vh var(--tooth-dark);
+}
+
+.d-pad {
+    left: 30%;
+    margin-top: -5vh;
+    width: 12vh;
+    height: 19vh;
+    background:
+        radial-gradient(5vh 7.5vh, var(--bone-light) 20%, transparent 50%) 2vh 1.5vh / 10vh 8vh no-repeat, 
+        radial-gradient(6vh 6vh, var(--bone-light) 20%, var(--bone-dark) 50%, var(--shadow) 52%, transparent 60% ) 0 0 / 8vh 8vh no-repeat,
+        radial-gradient(5vh 5vh, var(--bone-light) 20%, var(--bone-dark) 50%, var(--shadow) 52%, transparent 60% ) 4.5vh 0vh / 8vh 8vh no-repeat,
+
+        radial-gradient(5vh 30vh at 0 50%, transparent 45%, var(--shadow) 50%, var(--bone-dark) 52%, var(--bone-light)) 1.2vh 5vh  / 5vh 30vh no-repeat,
+        radial-gradient(5vh 30vh at 100% 50%, transparent 45%, var(--shadow) 50%, var(--bone-dark) 52%, var(--bone-light)) 5.8vh 5vh / 5vh 30vh no-repeat;
+    
+    border-radius: 4vh 4vh 0 0;
+
+    text-align: center;
+    line-height: 15vh;
+    font-size: 5vh;
+    color: white;
+
+
+    z-index: 1;
+    transform-origin: 50% 100%;
+}
+
+.up {
+    transform: rotate(-10deg);
+}
+
+.right {
+    transform: rotate(100deg);
+    z-index: 2;
+}
+
+.down {
+    transform: rotate(170deg);
+}
+
+.left {
+    transform: rotate(280deg);
+}
+
+.controls {
+    margin-top: 10vh;
+}
+
+*::before,
+*::after {
+    pointer-events: none;
+}
+
+.big-button::before,
+.previous::before,
+.next::after,
+.accent::before,
+.accent::after {
+    display: block;
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+    content: "";
+}
+
+.big-button::before {
+    top: .5vh;
+    left: -5vh;
+}
+
+.B {
+    left: 54%;
+    transform: translateY(.5vh) rotate(-5deg);
+}
+
+.B::before {
+    top: -.5vh;
+    left: -5.3vh;
+    transform: rotate(8deg);
+}
+
+.A {
+    left: 67%;
+    transform: rotate(-10deg);
+}
+
+.A::before {
+    top: -.5vh;
+    left: -5.2vh;
+    transform: rotate(5deg);
+
+    background: linear-gradient(to right, var(--bright-gold) -7%, var(--gold) 15%, var(--gold) 35%,var(--bright-gold) 60%,var(--gold) 75%, var(--dark-gold) 95%); 
+}
+
+.accent {
+    left: 34%;
+    top: 68%;
+}
+
+.accent::before {
+    left: -5.1vh;
+    top: -.5vh;
+    transform: rotate(10deg);
+}
+
+.accent::after {
+    left: 5.2vh;
+    top: .5vh;
+    transform: rotate(2deg);
+}
+
+.skin-change {
+    top: 84%;
+    left: 53%;
+}
+
+.skin-change > div,
+.skin-change > div::before,
+.skin-change > div::after {
+    position: absolute;
+}
+
+.previous::before {
+    left: -5.5vh;
+    transform: rotate(-5deg);
+}
+
+.next {
+    left: 5.2vh;
+    transform: rotate(5deg);
+}
+
+.next::after {
+    top: -.5vh;
+    left: 5vh;
+    transform: rotate(10deg);
+}
+
+.big-button:active,
+.skin-change > div:active {
+    transform: translateY(1vh);
+}

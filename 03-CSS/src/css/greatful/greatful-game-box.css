@@ -1,0 +1,84 @@
+
+body {
+    background: 
+        radial-gradient(100vh 100vh at 50% 50%, transparent 46.1%, black 46.3% 46.8%, var(--bone-light) 47% 49.3%, black 49.5% 50%, transparent 50.2%) 0 0,
+        radial-gradient(100vh 100vh at 100% 50%, #353781 46.5%, transparent 47%) -50vw 0 no-repeat,
+        radial-gradient(100vh 100vh at 0% 50%, #b92727 46.5%, transparent 47%) 50vw 0 no-repeat,
+        var(--bone-light);
+    overflow: hidden;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.gameBox {
+    background:
+
+        /* Spike under inner circle */
+        radial-gradient(5vh 5vh at 0% 100%, transparent 103%, black 104%) 47% 75.7% / 5vh 5vh no-repeat,
+        radial-gradient(5vh 5vh at 100% 100%, transparent 103%, black 104%) 53.5% 75.7% / 5vh 5vh no-repeat,
+        /* inner circle */
+        radial-gradient(70vh 70vh at 50% 39%, transparent 45%, black 45.5% 46.5%, transparent 47%) 0 0,
+        radial-gradient(70vh 70vh at 50% 440%, #b92727 46.5%, transparent 47%) 50% 7% / 60vh 7.5vh no-repeat,
+        radial-gradient(70vh 70vh at 50% -340%, #353781 46.5%, transparent 47%) 50% 69.4% / 60vh 7.5vh no-repeat,
+        radial-gradient(70vh 70vh at 100% 39%, #b92727 46.5%, transparent 47%) -40vh 0 no-repeat,
+        radial-gradient(70vh 70vh at 50% 39%, #353781 46.5%, transparent 47%) 0 0 no-repeat,
+        /* Eyes */
+        radial-gradient(20vh 7vh at 50% 80%, black 45%, transparent 47%) 29.5% 76% / 20vh 7vh no-repeat,
+        radial-gradient(20vh 7vh at 50% 80%, black 45%, transparent 47%) 70.5% 76% / 20vh 7vh no-repeat,
+        /* Nostrils */
+        /* Left */
+        linear-gradient(100deg, var(--bone-light) 49%, transparent 51%) 46.9% 84.5% / 6vh 6vh no-repeat,
+        linear-gradient(45deg, var(--bone-light) 49%, transparent 51%) 46% 87% / 5vh 5vh no-repeat,
+        radial-gradient(15vh 15vh at -50% 60%, black  50%, transparent 52%) 48.5% 86% / 7vh 7vh no-repeat,
+        /* Right */
+        linear-gradient(-100deg, var(--bone-light) 49%, transparent 51%) 53.2% 84.5% / 6vh 6vh no-repeat,
+        linear-gradient(-45deg, var(--bone-light) 49%, transparent 51%) 54% 87% / 5vh 5vh no-repeat,
+        radial-gradient(15vh 15vh at 150% 60%, black 50%, transparent 52%) 51.5% 86% / 7vh 7vh no-repeat,
+        /* Upper Cheekbones */
+        radial-gradient(30vh 35vh at -25% 100%, transparent 35%, black 36% 38.5%, var(--bone-light) 39%) 23.5% 66% / 40% 13% no-repeat,
+
+        radial-gradient(30vh 50vh at 0% 80%, transparent 35%, black 36% 38.5%, var(--bone-light) 39%) 1% 65.4% / 40% 14% no-repeat,
+        radial-gradient(30vh 50vh at 100% 80%, transparent 35%, black 36% 38.5%, var(--bone-light) 39%) 99.1% 65.4% / 40% 14% no-repeat,
+        /* Lower Cheeckbones */
+        radial-gradient(20vh 15vh at 100% 0%, var(--bone-light) 44%, black 44.5% 49%, transparent 50%) -17.2% 87% / 40% 20% no-repeat,
+        radial-gradient(20vh 15vh at 100% 0%, var(--bone-light) 44%, black 44.5% 49%, transparent 50%) -23.2% 87.7% / 40% 20% no-repeat,
+        radial-gradient(20vh 15vh at 0% 0%, var(--bone-light) 44%, black 44.5% 49%, transparent 50%) 123.2% 87.7% / 40% 20% no-repeat,
+        /* Jawbones */
+        radial-gradient(12vh 12vh at 100% 12%, var(--bone-light)40.8%, black 42.5% 50%, transparent 51%) -3% 96% / 40% 20% no-repeat,
+        radial-gradient(12vh 12vh at 100% 12%, var(--bone-light)40.8%, black 42.5% 50%, transparent 51%) -8% 96% / 40% 20% no-repeat,
+        radial-gradient(12vh 12vh at 100% 12%, var(--bone-light)40.8%, black 42.5% 50%, transparent 51%) -13% 96% / 40% 20% no-repeat,
+        radial-gradient(12vh 12vh at 100% 12%, var(--bone-light) 38%, black 40% 50%, transparent 51%) -20% 96% / 40% 20% no-repeat,
+        radial-gradient(12vh 12vh at 0% 12%, var(--bone-light)40.8%, black 42.5% 50%, transparent 51%) 120% 96% / 40% 20% no-repeat,
+        /* Fill */
+        linear-gradient(var(--bone-light) 0% 100%) 50% 76% / 42vh 10vh no-repeat,
+        radial-gradient(35vh 35vh at 50% 69%, var(--bone-light) 0 50%, transparent 51%),
+        linear-gradient(var(--bone-light) 0% 85%, black 90%) 50% 84.1% / 37vh 8vh no-repeat,
+        /* Upper Jaw */
+        radial-gradient(23vh 30vh at 50% 50%, var(--bone-light) 48%, black 48.5% 51%, transparent 52%) 0 29vh no-repeat,
+        radial-gradient(30vh 30vh at 50% 50%, var(--bone-light) 49%, black 49.5% 51%, transparent 52%) 0 28vh no-repeat,
+        /* Outer Circle */
+        radial-gradient(70vh 70vh at 50% 39%, transparent 46.4%, var(--bone-light) 46.5% 49.3%, black 49.5% 51%, transparent 51.2%) 0 0;
+}
+
+.logo,
+.reset {
+    color: var(--text-color);
+    text-shadow: 0 0 1vh var(--text-color);
+    transform: translateX(5vh) translateY(-10vh) rotate(-25deg);
+}
+
+.screen {
+    margin: 6.7vh 20vh 0 20vh;
+
+    box-shadow: 0 0 5vh 0 black inset;
+    border: 1vh solid black;
+    border-radius: 10vh 0 10vh 0;
+}
+
+.reset {
+    font-size: 5vh;
+    transform: translateX(-15vh) rotate(20deg);
+}
+
+.menu {
+    margin: 7vh 26vh 0 26vh ;
+}

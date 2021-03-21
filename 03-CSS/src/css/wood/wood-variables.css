@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Meddon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+:root {
+    --nail: radial-gradient(circle at 1.5vh 10vh, rgb(54, 54, 54) .5vh, transparent .6vh);
+    --light: 30%; /* 80% */
+    --contrast: 10%; /* 2% */
+    --hue: 10; /* 35 */
+    --wood-dark: hsla(60, 20%, 1%, 0.5);
+    --wood-bg: hsl(41, 33%, 22%);
+    --wood1: hsla(calc(var(--hue) + 1), 79%, calc(var(--light) - var(--contrast)), 0.5);
+    --wood2: hsla(calc(var(--hue) + 3), 86%, var(--light), 0.5);
+    --wood3: hsla(calc(var(--hue) + 3), 79%, calc(var(--light) - 3 * var(--contrast)), 0.5);
+    --wood4: hsla(var(--hue), 80%, calc(var(--light) - var(--contrast) / 2), 0.5);
+    --wood5: hsla(calc(var(--hue) + 1), 88%, calc(var(--light) + 2 * var(--contrast)), 0.5);
+    --wood6: hsla(calc(var(--hue) + 2), 75%, calc(var(--light) - 3 * var(--contrast)), 0.5);
+
+    --wood: linear-gradient(
+        to bottom, 
+        var(--wood-dark) 0%,
+        var(--wood-dark) 2%,
+        var(--wood1) 2%,
+        var(--wood2) 6%,
+        var(--wood1) 6%,
+        var(--wood1) 9%,
+        var(--wood3) 12%,
+        var(--wood1) 15%,
+        var(--wood4) 17%,
+        var(--wood1) 19%,
+        var(--wood1) 21%,
+        var(--wood5) 23%,
+        var(--wood5) 25%,
+        var(--wood1) 27%,
+        var(--wood6) 29%,
+        var(--wood1) 29%,
+        var(--wood1) 32%,
+        var(--wood-dark) 32%,
+        var(--wood-dark) 34%,
+        var(--wood1) 34%,
+        var(--wood1) 37%,
+        var(--wood5) 40%,
+        var(--wood5) 43%,
+        var(--wood1) 43%,
+        var(--wood1) 44%,
+        var(--wood1) 47%,
+        var(--wood6) 49%,
+        var(--wood1) 52%,
+        var(--wood5) 54%,
+        var(--wood4) 56%,
+        var(--wood1) 59%,
+        var(--wood4) 61%,
+        var(--wood5) 64%,
+        var(--wood1) 64%,
+        var(--wood4) 65%,
+        var(--wood-dark) 65%,
+        var(--wood-dark) 67%,
+        var(--wood1) 67%,
+        var(--wood2) 71%,
+        var(--wood1) 74%,
+        var(--wood1) 76%,
+        var(--wood1) 77%,
+        var(--wood1) 80%,
+        var(--wood5) 81%,
+        var(--wood1) 83%,
+        var(--wood5) 83%,
+        var(--wood5) 85%,
+        var(--wood1) 87%,
+        var(--wood5) 89%,
+        var(--wood5) 91%,
+        var(--wood1) 92%,
+        var(--wood2) 96%,
+        var(--wood1) 97%,
+        var(--wood1) 97%,
+        var(--wood1) 98%,
+        var(--wood1) 100%);
+
+    --wood-alt: linear-gradient(
+        to bottom, 
+        var(--wood-dark) 0%,
+        var(--wood-dark) 2%,
+        var(--wood2) 3%,
+        var(--wood1) 9%,
+        var(--wood1) 15%,
+        var(--wood1) 19%,
+        var(--wood5) 23%,
+        var(--wood1) 23.5%,
+        var(--wood1) 29%,
+        var(--wood1) 34%,
+        var(--wood5) 40%,  
+        var(--wood1) 43%,   
+        var(--wood1) 47%,  
+        var(--wood5) 52%,  
+        var(--wood4) 54%,  
+        var(--wood4) 61%,
+        var(--wood1) 64%,
+        var(--wood1) 69%,
+        var(--wood1) 74%,  
+        var(--wood1) 77%,
+        var(--wood5) 81%,  
+        var(--wood5) 83%,    
+        var(--wood1) 87%,  
+        var(--wood5) 91%,   
+        var(--wood2) 96%,  
+        var(--wood1) 97%,
+        var(--wood4) 100%);
+}

@@ -1,0 +1,137 @@
+@import url(./wood-variables.css);
+@import url(./wood-controls.css);
+
+body {
+    overflow: hidden;
+    --hue: 27;
+    --saturation: 80%;
+    --light: 10%;
+    --alpha: 1;
+    --light-spread: 10%;
+    --base-color: hsla(var(--hue), var(--saturation), var(--light), var(--alpha));
+    --light-color: hsla(var(--hue), var(--saturation), calc(var(--light) + 2 * var(--light-spread)), var(--alpha));
+    --medium-color: hsla(var(--hue), var(--saturation), calc(var(--light) + var(--light-spread)), var(--alpha));
+    --dark-color: hsla(var(--hue), var(--saturation), calc(var(--light) - var(--light-spread)), var(--alpha));
+
+    --circle: transparent 45%, var(--base-color) 46%,var(--light-color) 50%, var(--dark-color) 54%, transparent 55%;
+
+    --cell-count: 12;
+
+    --border: 2vh;
+
+    --cell: calc((100vh - 2 * var(--border)) / var(--cell-count));
+
+    
+
+    --side-delta: max(100vw - 100vh, 100vh - 100vw);
+
+    --corner: linear-gradient(var(--medium-color) 0 100%);
+
+    --inset-horizontal: var(--border);
+
+    --weave-inset: var(--inset-horizontal) var(--border);
+
+    --corner-size: var(--inset-horizontal) var(--border);
+
+
+    --corners: 
+        var(--corner) 0 0 / var(--corner-size)          no-repeat,
+        var(--corner) 100% 0 / var(--corner-size)       no-repeat,
+        var(--corner) 100% 100% / var(--corner-size)    no-repeat,
+        var(--corner) 0 100% / var(--corner-size)       no-repeat;
+        
+
+    --weave-border-left-connection:
+        linear-gradient(-45deg, var(--medium-color) 0 6%, transparent 7%)       0 var(--border) / var(--border) var(--cell)   repeat-y,
+        linear-gradient(-67.5deg, var(--light-color) 11%, transparent 12%)      0 var(--border) / var(--border) var(--cell)   repeat-y,
+        linear-gradient(225deg, var(--medium-color) 0 6%, transparent 7%)       0 var(--border) / var(--border) var(--cell)   repeat-y,
+        linear-gradient(247.5deg, var(--base-color) 11%, transparent 12%)       0 var(--border) / var(--border) var(--cell)   repeat-y;
+
+    --weave-border-top-connection: 
+        linear-gradient(-45deg, var(--medium-color) 0 6%, transparent 7%)     var(--inset-horizontal) 0 / var(--cell) var(--border)   repeat-x,
+        linear-gradient(-22.5deg, var(--light-color) 11%, transparent 12%)    var(--inset-horizontal) 0 / var(--cell) var(--border)   repeat-x,
+        linear-gradient(45deg, var(--medium-color) 0 6%, transparent 7%)      var(--inset-horizontal) 0 / var(--cell) var(--border)   repeat-x;
+
+    --weave-border-right-connection:
+        linear-gradient(45deg, var(--medium-color) 0 6%, transparent 7%)        100% var(--border) / var(--border) var(--cell)   repeat-y,
+        linear-gradient(67.5deg, var(--base-color) 11%, transparent 12%)        100% var(--border) / var(--border) var(--cell)   repeat-y,
+        linear-gradient(135deg, var(--medium-color) 0 6%, transparent 7%)       100% var(--border) / var(--border) var(--cell)   repeat-y,
+        linear-gradient(112.5deg, var(--dark-color) 11%, transparent 12%)       100% var(--border) / var(--border) var(--cell)   repeat-y;
+
+    --weave-border-bottom-connection: 
+        linear-gradient(-225deg, var(--medium-color) 0 6%, transparent 7%)     var(--inset-horizontal) 100% / var(--cell) var(--border)   repeat-x,
+        linear-gradient(-202.5deg, var(--dark-color) 11%, transparent 12%)    var(--inset-horizontal) 100% / var(--cell) var(--border)   repeat-x,
+        linear-gradient(-135deg, var(--medium-color) 0 6%, transparent 7%)      var(--inset-horizontal) 100% / var(--cell) var(--border)   repeat-x;
+
+    --weave-border: 
+        var(--corners),
+        var(--weave-border-top-connection),
+        linear-gradient(to bottom, var(--medium-color) 70%, var(--base-color) 71%)  0 0 / var(--cell) var(--border)       repeat-x,
+        var(--weave-border-bottom-connection),
+        linear-gradient(to top, var(--medium-color) 70%, var(--base-color) 71%)     0 100% / var(--cell) var(--border)    repeat-x,
+        var(--weave-border-right-connection),
+        linear-gradient(to left, var(--medium-color) 70%, var(--light-color) 71%)   100.1% 0 / var(--border) var(--cell)  repeat-y,
+        var(--weave-border-left-connection),
+        linear-gradient(to right, var(--medium-color) 70%, var(--dark-color) 71%)   0 0 / var(--border) var(--cell)       repeat-y;
+
+    --weave-straight-attributes: var(--weave-inset) / var(--cell) var(--cell) repeat;
+
+    --weave-straight: 
+        linear-gradient(135deg, transparent 65%,var(--medium-color) 66%, var(--light-color) 70%, var(--dark-color) 74%, transparent 75%) var(--weave-straight-attributes),
+        linear-gradient(45deg, transparent 75%,var(--medium-color) 76%, var(--light-color) 80%, var(--dark-color) 84%, transparent 85%) var(--weave-straight-attributes),
+        linear-gradient(45deg, transparent 40%, var(--base-color) 41% 46%, var(--medium-color) 46.1% 53.9%, var(--base-color) 54% 59%, transparent 60%) var(--weave-straight-attributes),
+        linear-gradient(135deg, transparent 40%,var(--light-color) 41% 46%, var(--medium-color) 46.1% 53.9%, var(--dark-color) 54% 59%, transparent 60%) var(--weave-straight-attributes),
+        linear-gradient(135deg, transparent 15%,var(--medium-color) 16%, var(--light-color) 20%, var(--dark-color) 24%, transparent 25%) var(--weave-straight-attributes),
+        linear-gradient(45deg, transparent 25%,var(--medium-color) 26%, var(--light-color) 30%, var(--dark-color) 34%, transparent 35%) var(--weave-straight-attributes);
+
+    background: 
+        var(--weave-border),
+        var(--weave-straight),
+        var(--wood) var(--weave-inset) / var(--cell) var(--cell),
+        radial-gradient(yellow, red) var(--weave-inset) / var(--cell) var(--cell);
+}
+
+.gameBox {
+    opacity: 0;
+    background: 
+        radial-gradient(circle at 80% 80%, hsl(120, 100%, 10%) 0 100%);
+
+    border-width: 3vh 3vh;
+    border-style: solid;
+    border-color: transparent goldenrod;
+    border-collapse: collapse;
+
+}
+
+
+.screen {
+    border-width: 1vh;
+    border-style: solid;
+    border-radius: var(--border);
+    border-color: var(--medium-color) var(--light-color) var(--medium-color) var(--base-color);
+}
+
+.noclass {
+    border-image-source: repeating-linear-gradient(
+        transparent,
+        var(--light-color) 2.9vh,
+        var(--medium-color) 3vh,
+        var(--medium-color) 3.7vh,
+        var(--base-color) 3.8vh,
+        var(--base-color) 4.7vh
+    );
+    border-image-repeat: round;
+    border-image-slice: 3%;
+}
+
+.logo {
+   
+
+    font-family: 'Monoton', cursive;
+    font-size: 4vh;
+    line-height: 6vh;
+    color: goldenrod;
+    text-shadow: 0 0 var(--border) goldenrod;
+}
+
+

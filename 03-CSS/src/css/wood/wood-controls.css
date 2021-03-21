@@ -1,0 +1,135 @@
+.d-pad {
+    margin-top: 4vh;
+    width: 10vh;
+    height: 11.8vh;
+
+    --bottle: hsla(125, 100%, 31%, 0.5);
+    --dark-bottle: hsla(125, 100%, 31%, 0.75);
+
+    background-color: var(--bottle);
+    background:
+        radial-gradient(3vh 2vh at 5vh 1vh, burlywood .2vh, hsla(25, 98%, 60%, 0.7) .7vh, transparent .8vh),
+        linear-gradient(to right, transparent 3.1vh, hsla(25, 98%, 60%, 0.7) 3.2vh, burlywood 3.7vh 6.3vh, hsla(25, 98%, 60%, 0.7) 6.8vh, transparent 6.9vh),
+        radial-gradient(ellipse at 5vh 2.9vh, burlywood 1.9vh, hsla(25, 98%, 60%, 0.7) 2.4vh, transparent 2.5vh),
+        radial-gradient(ellipse at 5vh -.92vh, burlywood 1.9vh, hsla(25, 98%, 60%, 0.7) 2.4vh, transparent 2.55vh),
+        radial-gradient(3vh 1.2vh at 5vh 1vh, red .4vh, darkred .9vh, transparent 1vh),
+        linear-gradient(to right, transparent 4vh, darkred 4.1vh, red 5vh, darkred 5.9vh, transparent 6vh),
+        radial-gradient(3vh 1.2vh at 5vh 1vh, red, darkred .9vh, transparent 1vh),
+        linear-gradient(to right, transparent 4.2vh, var(--dark-bottle) 4.3vh, var(--bottle) 4.95vh, var(--dark-bottle) 5.7vh, transparent 5.8vh),
+        radial-gradient(circle at 3.8vh 0, transparent 3vh, var(--dark-bottle) 3.1vh, var(--bottle) 3.7vh),
+        radial-gradient(circle at 6.2vh 0, transparent 3vh, var(--dark-bottle) 3.1vh, var(--bottle) 3.7vh), 
+        radial-gradient(circle at 7.5vh 2vh, var(--bottle) 1.8vh, var(--dark-bottle) 2.4vh, transparent 2.5vh),
+        linear-gradient(to right, transparent 2.4vh, var(--dark-bottle) 2.5vh, var(--bottle) 3.3vh 6.8vh, var(--dark-bottle) 7.4vh, transparent 7.5vh),
+        linear-gradient(to right, transparent 2.4vh, var(--dark-bottle) 2.5vh, var(--bottle) 3.3vh 6.8vh, var(--dark-bottle) 7.4vh, transparent 7.5vh),
+        radial-gradient(ellipse at 2.5vh 2vh, var(--dark-bottle) 1vh, var(--bottle) 1.6vh 2.4vh, transparent 2.5vh),
+        radial-gradient(ellipse at 2.5vh 0, hsla(125, 100%, 31%, 0.85) 1vh, var(--dark-bottle) 1.6vh 2.4vh, transparent 2.5vh);
+    background-size: 10vh 2vh, 10vh 2vh, 10vh 2vh, 10vh 2vh, 10vh 2vh, 10vh .5vh, 10vh 2vh, 10vh 2vh, 10vh 2vh, 10vh 2vh, 10vh 2vh;
+    background-repeat: no-repeat;
+    background-position: 0 4vh, 0 8vh, 0 6vh, 0 9.9vh, 0vh 0vh, 0 1vh, 0vh .5vh, 0 1vh, 4.95vh 3vh, -5vh 3vh, -2.6vh 5vh, 0 7vh, 0 9vh, 2.5vh 9vh, 2.5vh 11vh;
+    background-blend-mode: normal;
+
+    transform-origin: 50% 60%;
+
+    font-size: 5vh;
+    text-align: center;
+    line-height: 19.5vh;
+
+    transition: all ease .5s;
+}
+
+.up:active {
+    animation: up-rotation .5s linear infinite; 
+    transition: transform ease .5s;
+}
+
+@keyframes up-rotation {
+    100% { transform: rotate(0deg) translateY(-7vh) rotate(360deg); }
+}
+
+.right:active {
+    animation: right-rotation .5s linear infinite;
+}
+
+@keyframes right-rotation {
+    100% { transform: rotate(90deg) translateY(-7vh) rotate(360deg); }
+}
+
+.down:active {
+    transform: rotate(180deg) translateY(-7vh) rotate(360deg);
+}
+
+.left:active {
+    transform: rotate(270deg) translateY(-7vh) rotate(360deg);
+}
+
+.big-button,
+.reset,
+.skin-change > div {
+    width: 8vh;
+    height: 8vh;
+
+    --stripe: transparent 41%, darkred 42% 45%, transparent 46% 54%, darkred 55% 58%, transparent 59%;
+    --diagonal-stripe: transparent 43%, darkred 44% 46%, transparent 47% 53%, darkred 54% 56%, transparent 57%;
+    --dot: ivory 2%, darkred 3% 7%, transparent 4%;
+
+    background: 
+        radial-gradient(circle at 50% 6%, var(--dot)),
+        radial-gradient(circle at 50% 94%, var(--dot)),
+        radial-gradient(circle at 6% 50%, var(--dot)),
+        radial-gradient(circle at 94% 50%, var(--dot)),
+        radial-gradient(circle at 18.8% 18.8%, var(--dot)),
+        radial-gradient(circle at 81.2% 81.2%, var(--dot)),
+        radial-gradient(circle at 18.8% 81.2%, var(--dot)),
+        radial-gradient(circle at 81.2% 18.8%, var(--dot)),
+        linear-gradient(var(--stripe)),
+        linear-gradient(90deg, var(--stripe)),
+        linear-gradient(45deg, var(--diagonal-stripe)),
+        linear-gradient(135deg, var(--diagonal-stripe)),
+        radial-gradient(darkred 47%, transparent 48% 51%,darkred 52% 56%, transparent 57%),
+        radial-gradient(ivory, ivory);
+
+    box-shadow: 0 0 1vh .2vh black;
+
+    font-size: 5vh;
+    line-height: 8vh;
+    text-align: center;
+    color: black;
+    
+    border-radius: 50%;
+
+    transition: .3s;
+}
+
+.skin-change {
+    bottom: 0vh;
+    transform: rotate(20deg);
+}
+
+.previous {
+    transform: rotate(-22deg);
+}
+
+.next {
+    transform: rotate(-18deg);
+    margin-left: -3vh;
+}
+
+.big-button:active,
+.reset:active,
+.skin-change > div:active {
+    animation: shake .5s linear infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }

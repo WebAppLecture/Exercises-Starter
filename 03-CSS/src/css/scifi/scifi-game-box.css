@@ -116,6 +116,26 @@ body {
         occlusion var(--orbital-period) linear infinite;
 }
 
+.accent::after {
+    display: block;
+    position: absolute;
+    --moon-orbit-size: 20%;
+    top: calc(50% - var(--moon-orbit-size) / 2);
+    left: calc(50% - var(--moon-orbit-size) / 2);
+    content: "";
+    width: var(--moon-orbit-size);
+    height: var(--moon-orbit-size);
+
+    transform-origin: 50% 50%;
+    background: radial-gradient(red 1vh, transparent 1.1vh);
+
+    border: 1px solid yellow;
+    animation: orbit-smooth 3s linear reverse infinite,
+        occlusion 3s linear reverse infinite;
+
+    z-index: 0;
+}
+
 @keyframes orbit-smooth {
     0% { 
         transform: rotate(0) translateX(var(--ellipse-r2)) rotate(0deg) translateX(var(--ellipse-r1)) rotate(-12deg);

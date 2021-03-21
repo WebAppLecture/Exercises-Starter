@@ -1,0 +1,46 @@
+
+body {
+    background-color: #100;
+    overflow: hidden;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.gameBox {
+
+    background:
+        radial-gradient(5vh 10vh at 100% 100%, var(--color-shadow) 30%, var(--bone-dark) 50%, transparent 52%) 45% 62% / 5vh 5vh no-repeat,
+        radial-gradient(5vh 10vh at 0% 100%, var(--color-shadow) 30%, var(--bone-dark) 50%, transparent 52%) 55% 62% / 5vh 5vh no-repeat,
+        radial-gradient(circle, var(--bone-light) 0% 47%, transparent 55%) 50% 62% / 60% 60% no-repeat,
+        radial-gradient(circle at 0% 100%, transparent 35%, var(--shadow) 40%, var(--bone-dark) 41%, var(--bone-light) 61%) 17% 71% / 40% 10% no-repeat,
+        radial-gradient(circle at 100% 100%, transparent 35%, var(--shadow) 40%, var(--bone-dark) 41%, var(--bone-light) 61%) 84% 71% / 40% 10% no-repeat,
+        radial-gradient(70vh 65vh at 50% 35%, var(--bone-light) 40%,var(--bone-dark) 50%, var(--shadow) 50.2%, transparent 52%) 0 0,
+        linear-gradient(to right, transparent 17%, var(--shadow) 21.8%, var(--bone-dark) 22%, var(--bone-light) 32% 69%, var(--bone-dark) 79%, var(--shadow) 79.2%, transparent 84%) 0 60% / 100% 10% no-repeat,
+        radial-gradient(ellipse at 50% 0%, var(--mouth-glow), var(--shadow) 32.5%, transparent 36%) .25vh 92.4% / 100% 20% no-repeat;
+}
+
+.logo,
+.reset {
+    color: var(--text-color);
+    text-shadow: 0 0 1vh var(--text-color);
+    transform: translateX(5vh) translateY(-10vh) rotate(-25deg);
+}
+
+.screen {
+    margin: 0 20vh;
+
+    box-shadow: 0 0 5vh 0 black inset;
+
+    border-top-left-radius: 10vh 5vh;
+    border-top-right-radius: 10vh 5vh;
+    border-bottom-right-radius: 10vh 5vh;
+    border-bottom-left-radius: 10vh 5vh;
+}
+
+.reset {
+    font-size: 5vh;
+    transform: translateX(-15vh) rotate(20deg);
+}
+
+.menu {
+    margin: 0 26vh ;
+}
