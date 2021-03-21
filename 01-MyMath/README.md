@@ -38,7 +38,7 @@ Implementiere die Potenzfunktion: `pow()`
 Verwende dabei nicht die in Javascript eingebaute `Math.pow()` Methode oder den `**` Operator, du kannst aber mithilfe dieser dein Ergebniss kontrollieren.
 Eine For-Schleife könnte hier hilfreich sein. 
 
-Beachte, dass diese Lösung keine negativen Potenzen oder Brüche vorsieht. Überprüfe deswegen ob die übergebene Potenz positiv und ganzzahlig ist.
+Beachte, dass diese Lösung keine negativen Potenzen oder Brüche vorsieht. Überprüfe deswegen ob die übergebene Potenz positiv und ganzzahlig ist. (`bruch % 1 !== 0`)
 
 Sobald dies funktioniert, schreibe den Code so um, dass er auch negative Potenzen berechnen kann.
 Errinnerung: `n^-x = 1 / n^x`
