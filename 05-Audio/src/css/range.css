@@ -23,10 +23,18 @@ border: none;
 width: 2vw;
 height: .9vw;
 border-radius: .2vw;
-background-color:  black;
+background: linear-gradient(black, transparent 20%, transparent 80%, black),
+    linear-gradient(to right, black 47%, ivory 50%, black 53%);
 box-shadow: 0 0 .5vw 0 black;
 }
 
 input[type='range']:focus {
-outline: none;
+    outline: none;
 }
+
+input[type='range']:active::-webkit-slider-thumb {
+    
+    background: linear-gradient(black, transparent 20%, transparent 80%, black),
+    linear-gradient(to right, black 47%, red 50%, black 53%);
+}
+    

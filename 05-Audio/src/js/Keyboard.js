@@ -1,42 +1,122 @@
 export class KeyBoard {
 
-    constructor(keysDomReference, volume, decay, osci1, osci2, detune) {
-        this.audioContext = new window.AudioContext();    
+    constructor(keysDomReference, masterSection, oscillatorSection, filterSection) {
+        this.audioContext = new window.AudioContext();  
         this.playingNotes = {};
         this.loadedNotes = {};
         this.generateKeyboard(keysDomReference);
-        this.setupVolume(volume);
-        this.setupDecay(decay);
-        this.setupOscillators(osci1, osci2, detune);
+        
+        this.setupVolume(masterSection);
+        this.setupDecay(masterSection);
+
+        this.setupCompressor();
+        
+        this.setupFilter(filterSection);
+        this.setupOscillators(oscillatorSection);
+        this.setupDetune(oscillatorSection);
     }
 
-    setupVolume(volume) {
+    setupVolume(masterSection) {
         this.masterGainNode = this.audioContext.createGain();
-        this.masterGainNode.gain.value = .2;
-        volume.value = this.masterGainNode.gain.value;
         this.masterGainNode.connect(this.audioContext.destination);
-        volume.addEventListener("input", (e) => this.volume = e.target.value);
+        this.volume = .2;
+
+        this.createFader(
+            0, 1, .01, .2, masterSection,
+            e => this.volume = e.target.value
+        );
     }
 
-    setupDecay(decay) {
-        this.decayValue = decay;
+    setupDecay(masterSection) {
         this.decayQueue = {};
         this.decayLoop();
+
+        this.decayRange = this.createFader(
+            0, 2000, 50, 500, masterSection
+        );
     }
 
-    setupOscillators(osci1, osci2, detune) {
+    setupCompressor() {
+        this.compressor = this.audioContext.createDynamicsCompressor();
+        this.compressor.threshold.setValueAtTime(-50, this.audioContext.currentTime);
+        this.compressor.knee.setValueAtTime(40, this.audioContext.currentTime);
+        this.compressor.ratio.setValueAtTime(12, this.audioContext.currentTime);
+        this.compressor.attack.setValueAtTime(0, this.audioContext.currentTime);
+        this.compressor.release.setValueAtTime(0.25, this.audioContext.currentTime);
+        this.compressor.connect(this.masterGainNode);
+    }
+
+    setupFilter(filterSection) {
+        this.filterTable = ["lowpass","highpass","bandpass","lowshelf","highshelf","peaking","notch", "allpass"];
+        this.biquadFilterNode = this.audioContext.createBiquadFilter();
+        this.biquadFilterNode.type = "lowpass"; 
+        this.biquadFilterNode.frequency.setValueAtTime(100, this.audioContext.currentTime);
+        this.biquadFilterNode.Q.setValueAtTime(1, this.audioContext.currentTime);
+        this.biquadFilterNode.connect(this.masterGainNode);
+
+        this.createFader(0, this.filterTable.length - 1, 1, 0, filterSection, e => this.biquadFilterNode.type = this.filterTable[e.target.value]);
+        this.createFader(-3, 3, 0.1, 0, filterSection, e => this.biquadFilterNode.Q.setValueAtTime(10 ** e.target.value, this.audioContext.currentTime));
+        this.createFader(1, 4.5, 0.01, 1, filterSection, e => this.biquadFilterNode.frequency.setValueAtTime(10 ** e.target.value, this.audioContext.currentTime));
+
+    }
+
+    setupOscillators(oscillatorContainer) {
         this.oscillatorTable = ["sine", "square", "sawtooth", "triangle"];
         this.primaryOscillators = [];
         this.secondaryOscillators = [];
         this.osci1 = "sine";
         this.osci2 = "sawtooth";
+
+        this.setupOscillator(this.primaryOscillators, this._osci1);
+        this.setupOscillator(this.secondaryOscillators, this._osci2);
+
+        this.createFader(
+            0, 
+            this.oscillatorTable.length - 1, 
+            1, 
+            this.oscillatorTable.indexOf(this._osci1), 
+            oscillatorContainer,
+            e => this.osci2 = this.oscillatorTable[e.target.value]
+        );
+
+        this.createFader(
+            0, 
+            this.oscillatorTable.length - 1, 
+            1, 
+            this.oscillatorTable.indexOf(this._osci2), 
+            oscillatorContainer,
+            e => this.osci1 = this.oscillatorTable[e.target.value]
+        );
+    }
+
+    setupDetune(oscillatorContainer) {
         this.detune = 0;
-        osci1.value = this.oscillatorTable.indexOf(this._osci1);
-        osci2.value = this.oscillatorTable.indexOf(this._osci2);
-        detune.value = 0;
-        osci1.addEventListener("input", (e) => this.osci1 = this.oscillatorTable[e.target.value]);
-        osci2.addEventListener("input", (e) => this.osci2 = this.oscillatorTable[e.target.value]);
-        detune.addEventListener("input", (e) => this.detune = 10 ** e.target.value - 1);
+        this.createFader(
+            0,
+            4,
+            0.01,
+            0,
+            oscillatorContainer,
+            e => this.detune = 10 ** e.target.value - 1
+        );
+    }
+
+    setupOscillator(osciArray, waveForm) {
+        let oscillator = this.audioContext.createOscillator();
+        oscillator.type = waveForm; 
+        osciArray.push(oscillator);
+    }
+
+    createFader(min, max, step, value, parent, listener) {
+        let fader = document.createElement("input");
+        fader.setAttribute("type", "range");
+        fader.setAttribute("min", min);
+        fader.setAttribute("max", max);
+        fader.setAttribute("step", step);
+        fader.value = value;
+        fader.addEventListener("input", listener);
+        parent.appendChild(fader);
+        return fader;
     }
 
     set volume(volume) {
@@ -95,7 +175,7 @@ export class KeyBoard {
         this.secondaryOscillators.push(oscillator2);
         oscillator.connect(gainNode);
         oscillator2.connect(gainNode);
-        gainNode.connect(this.masterGainNode);
+        gainNode.connect(this.biquadFilterNode);
         oscillator2.detune.setValueAtTime(1000, this.audioContext.currentTime);
         gainNode.gain.value = 0;
         oscillator.start();
@@ -142,8 +222,8 @@ export class KeyBoard {
         let delta = (performance.now() - this.lastCalled);
         this.lastCalled = performance.now();
         Object.keys(this.decayQueue).forEach(key => {
-            if(this.decayValue.value > 0 && this.loadedNotes[key].gain.value > 0) {
-                this.loadedNotes[key].gain.value -= 1/(this.decayValue.value/delta);
+            if(this.decayRange.value > 0 && this.loadedNotes[key].gain.value > 0) {
+                this.loadedNotes[key].gain.value -= 1/(this.decayRange.value/delta);
             } else {
                 this.loadedNotes[key].gain.value = 0;
                 delete this.decayQueue[key];

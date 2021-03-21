@@ -1,7 +1,7 @@
 @import url(./range.css);
 
 .keyboard {
-    width: fit-content;
+    width: max-content;
 
     margin: 0 auto;
     padding: 2vw 1.5vw;
@@ -14,10 +14,24 @@
 }
 
 .controls {
-    display: inline-block;
+    display: flex;
     width: 100%;
-    height: fit-content;
+    height: max-content;
     padding: 1vw;
+}
+
+.controls section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-basis: 9%;
+}
+
+.controls section > * {
+    display: block;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 98%;
 }
 
 .keys {
@@ -25,8 +39,7 @@
     align-items: flex-start;
     user-select: none;
     
-    width: fit-content;
-
+    width: max-content;
 }
 
 .keys > div {
@@ -51,7 +64,7 @@
     line-height: calc(2 * 15vw - 2.5vw);
 }
 
-.keys > div[data-note$="#"]  {
+.keys > div[data-note$="#"] {
     left: -.75vw;
     margin-right: -1.5vw;
     
@@ -66,7 +79,7 @@
     z-index: 2;
 }
 
-.keys > div[data-note$="#"]:active,
+.keys > div[data-note$="#"].active,
 .keys > div.active {
-    transform: rotateX(-10deg)
+    transform: rotateX(-10deg);
 }
