@@ -1,30 +1,30 @@
 export const Inputs = {
     "primary": {
-        "keys": [101],
+        "keys": ["KeyE", "Enter"],
         "text": "E",
     },
     "secondary": {
-        "keys": [113],
+        "keys": ["KeyQ"],
         "text": "Q",
     },
     "up": {
-        "keys": [87, 38],
+        "keys": ["KeyW", "ArrowUp"],
         "text": "^",
     },
     "down": {
-        "keys": [83, 40],
+        "keys": ["KeyS", "ArrowDown"],
         "text": "^",
     },
     "left": {
-        "keys": [65, 37],
+        "keys": ["KeyA", "ArrowLeft"],
         "text": "^",
     },
     "right": {
-        "keys": [68, 39],
+        "keys": ["KeyD", "ArrowRight"],
         "text": "^",
     },
     "reset": {
-        "keys": [27],
+        "keys": ["Escape"],
         "text": "menu",
     },
 };

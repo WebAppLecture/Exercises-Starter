@@ -98,11 +98,11 @@ export class GameEngine {
 
     onKeyDown(event) {
         if(event.repeat) { return; }
-        this.input(this.keyMapping[event.which], true)
+        this.input(this.keyMapping[event.code], true)
     }
 
     onKeyUp(event) {
-        this.input(this.keyMapping[event.which], false);
+        this.input(this.keyMapping[event.code], false);
     }
 
     onControlMouseDown(event) {
