@@ -41,6 +41,7 @@ Erst erweitern wir eine bestehenden Skin um einen Design Element, damit ihr ein 
 Als erstes legen wir fest wo das Element sich befindet, und wie groß es ist.
 
 Erweitert die CSS Regel `.accent`
+* Das Element soll `absolute` positioniert sein
 * Das Element soll sich `.5vh` vom rechten Rand seines Elternelements positionieren ( `1vh` entspricht 1% der Höhe des Browserfensters, **v**iewport **h**eight)
 * Das Element soll sich `.5vh` vom unteren Rand seines Elternelements positionieren
 * Das Element ist `20vh` breit
