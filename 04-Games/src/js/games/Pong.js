@@ -1,5 +1,6 @@
 import { GameTemplate } from "./GameTemplate.js";
 import { GameObject, MovableGameObject, Ball, Mode } from "../GameObject.js";
+import { Inputs } from "../Inputs.js";
 
 export class Pong extends GameTemplate{
 
@@ -19,7 +20,7 @@ export class Pong extends GameTemplate{
                 "GAME OVER", 
                 "",
                 "",
-                "rematch: A"];
+                "rematch: " + Inputs.primary.text];
             this.gameOver = true;
         }
     }
@@ -52,18 +53,18 @@ export class Pong extends GameTemplate{
         this.drawPoints(ctx);
     }
 
-    drawPoints(ctx) {
+    drawPoints(ctx, fixed) {
         ctx.fillStyle = "#6bd26b";
         ctx.font = "30px monospace";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
-        ctx.fillText(this.leftPoints, 40, 250);
-        ctx.fillText(this.rightPoints, 360, 250);
+        ctx.fillText(this.leftPoints, 40, fixed ? 250 : this.leftPaddle.y + this.paddleSize/2);
+        ctx.fillText(this.rightPoints, 360, fixed ? 250 : this.rightPaddle.y + this.paddleSize/2);
     }
 
     gameOverScreen(ctx) {
-        this.drawPoints(ctx);
+        this.drawPoints(ctx, true);
         super.gameOverScreen(ctx);
     }
 

@@ -1,7 +1,9 @@
+import { Inputs } from "../Inputs.js";
+
 export class GameTemplate {
 
     constructor(mode) {
-        this.gameOverText = ["GAME OVER", "Restart: A"];
+        this.gameOverText = ["GAME OVER", "Restart: " + Inputs.primary.text];
         this.fillStyle = "#6bd26b";
         this.applyMode(mode);
         this.start();
