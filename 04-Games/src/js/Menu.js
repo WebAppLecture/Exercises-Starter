@@ -19,7 +19,7 @@ export class Menu {
 
         items.forEach(item => {
             let listElement = document.createElement("ul");
-            listElement.innerText = item.NAME;
+            listElement.innerText = item;
             this.domElement.appendChild(listElement);
         });
     
@@ -28,14 +28,13 @@ export class Menu {
     }
 
     select() {
-        this.onSelect();
+        this.onSelect(this.activeItem.innerHTML);
     }
 
     changeActiveItem(indexChange) {
         if(indexChange > 0) {
             let newActive = this.activeItem.previousElementSibling;
             this.activeItem = newActive || this.domElement.lastElementChild;
-            
         } else {
             let newActive = this.activeItem.nextElementSibling;
             this.activeItem = newActive || this.domElement.firstElementChild;

@@ -3,25 +3,31 @@ import { Inputs } from "../Inputs.js";
 export class GameTemplate {
 
     constructor(mode) {
-        this.gameOverText = ["GAME OVER", "Restart: " + Inputs.primary.text];
         this.fillStyle = "#6bd26b";
-        this.applyMode(mode);
+        if(mode) {
+            this.applyMode(mode);
+        }
         this.start();
-        this.bindControls();
+        this.gameOver = false;
+    }
+
+    get inputBinding() {}
+
+    get gameOverText() {
+        return ["GAME OVER", "Restart: E"];
     }
 
     applyMode(mode) {
-        if(!mode) {
-            return;
-        }
-        Object.keys(mode.parameters).forEach(key => {
-            this[key] = mode.parameters[key];
+        Object.keys(this.constructor.MODES[mode]).forEach(key => {
+            this[key] = this.constructor.MODES[mode][key];
         });
     }
 
     start() {}
 
-    bindControls() {}
+    end() {
+        this.gameOver = true;
+    }
 
     tick(ctx) {
         if(this.gameOver) {
@@ -51,16 +57,11 @@ export class GameTemplate {
 
     input(type, active) {
         if(this.gameOver && type === "primary") {
-            this.start();   
-            this.bindControls();  
+            this.start();
         }
         if(this.inputBinding.hasOwnProperty(type)) {
             this.inputBinding[type](active);
         }
-    }
-
-    static get NAME() {
-        return "No Name given";
     }
 
     static get MODES() {

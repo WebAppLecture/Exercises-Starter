@@ -1,5 +1,5 @@
 import { GameTemplate } from "./GameTemplate.js";
-import { GameObject, MovableGameObject, Ball, Mode } from "../GameObject.js";
+import { GameObject, MovableGameObject, Ball } from "../GameObject.js";
 import { Inputs } from "../Inputs.js";
 
 export class Pong extends GameTemplate{
@@ -8,7 +8,6 @@ export class Pong extends GameTemplate{
         this.leftPaddle = new Paddle(0, 250 - this.paddleSize/2, 10, this.paddleSize, this.paddleSpeed);
         this.rightPaddle = new Paddle(390, 250 - this.paddleSize/2, 10, this.paddleSize, this.paddleSpeed);
         this.ball = new Ball(200, 240, 20, 20, "#6bd26b", 8, 0);
-        this.gameOver = false;
         this.leftPoints = 0;
         this.rightPoints = 0;
         this.pointsToWin = 5;
@@ -16,25 +15,26 @@ export class Pong extends GameTemplate{
 
     checkPoints() {
         if(this.leftPoints >= this.pointsToWin || this.rightPoints >= this.pointsToWin) { 
-            this.gameOverText = [
-                "GAME OVER", 
-                "",
-                "",
-                "rematch: " + Inputs.primary.text];
-            this.gameOver = true;
+            this.end();
         }
     }
 
-    bindControls() {
-        this.inputBinding = {
-            "up": this.leftPaddle.up.bind(this.leftPaddle), 
-            "down": this.leftPaddle.down.bind(this.leftPaddle),  
-            "primary": this.rightPaddle.up.bind(this.rightPaddle),
-            "secondary": this.rightPaddle.down.bind(this.rightPaddle),
+    get inputBinding() {
+        return {
+            "up": active => this.leftPaddle.up(active), 
+            "down": active => this.leftPaddle.down(active),  
+            "primary": active => this.rightPaddle.up(active),
+            "secondary": active => this.rightPaddle.down(active),
         };
     }
 
-
+    get gameOverText() {
+        return [
+            "GAME OVER", 
+            "",
+            "",
+            "rematch: E"];
+    }
 
     update(ctx) {
         this.leftPaddle.update(ctx);
@@ -120,31 +120,28 @@ export class Pong extends GameTemplate{
         return "Pong";
     }
 
+    get MODES() {
+        return Pong.MODES;
+    }
+
     static get MODES() {
-        return [
-            {
-                NAME:"easy", 
-                parameters: {
-                    "maxBallSpeed": 8,
-                    "paddleSize": 100,
-                    "paddleSpeed": 8,
-                },
-            },{
-                NAME: "medium", 
-                parameters: {
-                    "maxBallSpeed": 20,
-                    "paddleSize": 80,
-                    "paddleSpeed": 8,
-                },
-            },{
-                NAME: "hard", 
-                parameters: {
-                    "maxBallSpeed": 30,
-                    "paddleSize": 60,
-                    "paddleSpeed": 12,
-                },
+        return {
+            easy: {
+                "maxBallSpeed": 8,
+                "paddleSize": 100,
+                "paddleSpeed": 8,
             },
-        ];
+            medium: {
+                "maxBallSpeed": 20,
+                "paddleSize": 80,
+                "paddleSpeed": 8,
+            },
+            hard: {
+                "maxBallSpeed": 30,
+                "paddleSize": 60,
+                "paddleSpeed": 12,
+            },
+        };
     }
 
 }

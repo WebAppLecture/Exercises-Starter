@@ -13,22 +13,23 @@ export class Snake extends GameTemplate{
         this.headOrientation = Snake.orientations.UP;
         this.nextMove = this.headOrientation;
         this.segments = [];
-        this.gameOver = false;
         this.initSnake(this.startLength);
-        this.spawnFood();
     }
 
-    end() {
-        this.gameOver = true;
-    }
-
-    bindControls() {
-        this.inputBinding = {
+    get inputBinding() {
+        return {
             "up": this.changeDirection.bind(this, Snake.orientations.UP), 
             "down": this.changeDirection.bind(this, Snake.orientations.DOWN),  
             "left": this.changeDirection.bind(this, Snake.orientations.LEFT),
             "right": this.changeDirection.bind(this, Snake.orientations.RIGHT),
         };
+    }
+
+    get gameOverText() {
+        return [
+            "GAME OVER", 
+            "Score: " + (this.segments.length - this.startLength) ,
+            "Restart: " + Inputs.primary.text];
     }
 
     initSnake(size) {
@@ -51,14 +52,14 @@ export class Snake extends GameTemplate{
         this.moveSegments();
 
         if(this.borderCollsion(ctx) || this.selfCollision()) {
-            this.gameOverText = [
-                "GAME OVER", 
-                "Score: " + (this.segments.length - this.startLength) ,
-                "Restart: " + Inputs.primary.text];
             this.end();
         }
 
         this.foodCollision();
+
+        if(!this.food) {
+            this.spawnFood(ctx);
+        }
     }
 
     moveSegments() {
@@ -76,7 +77,7 @@ export class Snake extends GameTemplate{
     draw(ctx) {
         this.drawBoundingBox(ctx);
         this.segments.forEach(segment => segment.draw(ctx));
-        this.food.draw(ctx);
+        this.food?.draw(ctx);
     }
 
     drawBoundingBox(ctx) {
@@ -109,32 +110,26 @@ export class Snake extends GameTemplate{
     foodCollision() {
         let head = this.segments[0];
 
-        if(this.food.x === head.x && this.food.y === head.y) {
+        if(this.food && this.food.x === head.x && this.food.y === head.y) {
             this.segments.push(new GameObject(
                 this.food.x,
                 this.food.y,
                 25, 25, "#6bd26b"
             ));
-
-            this.spawnFood();
+            delete this.food;
         }
     }
 
-    spawnFood() {
+    spawnFood(ctx) {
         let size = 25,
             x,
             y,
             legalCoordinates = false;
     
         while(!legalCoordinates) {
-            legalCoordinates = true;
-            x = Math.floor(Math.random() * 400/size) * size;
-            y = Math.floor(Math.random() * 500/size) * size;
-            this.segments.forEach(segment => {
-                if(segment.x === x && segment.y === y) {
-                    legalCoordinates = false;
-                }
-            })
+            x = Math.floor(Math.random() * ctx.canvas.width/size) * size;
+            y = Math.floor(Math.random() * ctx.canvas.height/size) * size;
+            legalCoordinates = !this.segments.some(segment => segment.x === x && segment.y === y);
         }
 
         this.food = new StrokedObject(x, y, 25, 25, "#6bd26b", 5);
@@ -147,10 +142,6 @@ export class Snake extends GameTemplate{
             UP: { x: 0, y: -1 },
             DOWN: { x: 0, y: 1 },
         };
-    }
-
-    static get NAME() {
-        return "Snake";
     }
 
 }

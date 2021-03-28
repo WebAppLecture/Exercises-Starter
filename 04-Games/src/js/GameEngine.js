@@ -1,19 +1,16 @@
-import { Pong } from "./games/Pong.js";
-import { Snake } from "./games/Snake.js";
-import { TestGame } from "./games/TestGame.js";
-import { Inputs } from "./Inputs.js";
 import { Menu } from "./Menu.js";
-import { FallingStones } from "./games/FallingStones.js";
 
 export class GameEngine {
 
-    constructor(controls, screen, menu) {
-        this.controls = controls;
+    constructor(controls, screen, menu, games) {
+        this.controls = Array.from(controls);
         this.screen = screen;
         this.menu = new Menu(menu);
+        this.games = games;
 
         this.setupCanvas();
-        this.setupControls();
+        this.setKeyMapping();
+        this.setupControlListeners();
         this.showGameSelect();
     }
 
@@ -24,27 +21,24 @@ export class GameEngine {
         }
     }
 
-    loadGameWithMode(game) {
-        let modeName = this.menu.activeItem.innerText,
-            mode = GameEngine.getModeByName(game, modeName);
+    loadGameWithMode(game, mode) {
         this.menu.hide();
         this.loadGame(game, mode);
     }
 
-    modeSelect() {
-        let name = this.menu.activeItem.innerText,
-            game = GameEngine.getGameByName(name),
+    modeSelect(name) {
+        let game = this.games[name],
             modes = game.MODES;
         if(modes.length === 0 ) {
             this.menu.hide();
             this.loadGame(game);
         } else {
-            this.menu.load(modes, this.loadGameWithMode.bind(this, game))
+            this.menu.load(Object.keys(modes), this.loadGameWithMode.bind(this, game))
         }
     }
 
     showGameSelect() {
-        this.menu.load(GameEngine.availableGames, this.modeSelect.bind(this));
+        this.menu.load(Object.keys(this.games), this.modeSelect.bind(this));
     }
 
     reset() {
@@ -53,33 +47,22 @@ export class GameEngine {
         this.showGameSelect();
     }
 
-    setupControls() {
-        this.setKeyMapping();
-        this.populateKeyText();
-        this.setupControlListeners();
-    }
-
     setKeyMapping() {
-        this.keyMapping = {};
-        Object.keys(Inputs).forEach(inputName => {
-            Inputs[inputName].keys.forEach(key => {
-                this.keyMapping[key] = inputName;
-            });
+        this.keyMapping = new Map();
+        this.controls.forEach(element => {
+            element.dataset.keybind.split(" ").forEach(keyCode => 
+                this.keyMapping.set(keyCode, element.id)
+            );
         });
-    }
-
-    populateKeyText() {
-        this.controls.querySelectorAll("*").forEach(control => {
-            control.innerText = Inputs[control.id].text;
-        });
+        return;
     }
 
     setupControlListeners() {
-        window.addEventListener("keydown", this.onKeyDown.bind(this));
-        window.addEventListener("keyup", this.onKeyUp.bind(this));
-        this.controls.querySelectorAll("*").forEach(control => {
-            control.addEventListener("mousedown", this.onControlMouseDown.bind(this));
-            control.addEventListener("mouseup", this.onControlMouseUp.bind(this));
+        window.addEventListener("keydown", event => event.repeat || this.input(this.keyMapping.get(event.code), true));
+        window.addEventListener("keyup", event => this.input(this.keyMapping.get(event.code), false));
+        this.controls.forEach(control => {
+            control.addEventListener("mousedown", () => this.input(control.id, true));
+            control.addEventListener("mouseup", () => this.input(control.id, false));
         });
     }
 
@@ -94,23 +77,6 @@ export class GameEngine {
             this.renderContext.clearRect(0,0,this.screen.width, this.screen.height);
             this.game.tick(this.renderContext);
         }
-    }
-
-    onKeyDown(event) {
-        if(event.repeat) { return; }
-        this.input(this.keyMapping[event.code], true)
-    }
-
-    onKeyUp(event) {
-        this.input(this.keyMapping[event.code], false);
-    }
-
-    onControlMouseDown(event) {
-        this.input(event.target.id, true);      
-    }
-
-    onControlMouseUp(event) {
-        this.input(event.target.id, false);      
     }
 
     input(type, active) {
@@ -134,28 +100,11 @@ export class GameEngine {
         }
     }
 
-    static get availableGames() {
-        return [Pong, Snake, TestGame, FallingStones];
-    }
-
-    static getGameByName(name) {
-
-        for(let i = GameEngine.availableGames.length; i--; ) {
-            let game = GameEngine.availableGames[i];
-            if(game.NAME.toLowerCase() === name.toLowerCase()) {
-                return game;
-            }
-        }
-        return false;
+    getGameByName(name) {
+        return this.games.find(game => game.NAME.toLowerCase() === name.toLowerCase());
     }
 
     static getModeByName(game, modeName) {
-        for(let i = game.MODES.length; i--; ) {
-            let mode = game.MODES[i];
-            if(mode.NAME.toLowerCase() === modeName.toLowerCase()) {
-                return mode;
-            }
-        }
-        return false;
+        return game.MODES.find(mode => mode.NAME.toLowerCase() === modeName.toLowerCase());
     }
 }
