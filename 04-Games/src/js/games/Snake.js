@@ -1,7 +1,6 @@
 import { GameTemplate } from "./GameTemplate.js";
 import { GameObject, StrokedObject } from "../GameObject.js";
 import { FpsControl } from "../FpsControl.js";
-import { Inputs } from "../Inputs.js";
 
 export class Snake extends GameTemplate{
 
@@ -29,7 +28,7 @@ export class Snake extends GameTemplate{
         return [
             "GAME OVER", 
             "Score: " + (this.segments.length - this.startLength) ,
-            "Restart: " + Inputs.primary.text];
+            "Restart: E"];
     }
 
     initSnake(size) {

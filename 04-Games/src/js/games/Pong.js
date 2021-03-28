@@ -1,6 +1,5 @@
 import { GameTemplate } from "./GameTemplate.js";
 import { GameObject, MovableGameObject, Ball } from "../GameObject.js";
-import { Inputs } from "../Inputs.js";
 
 export class Pong extends GameTemplate{
 

@@ -1,5 +1,3 @@
-import { Inputs } from "../Inputs.js";
-
 export class GameTemplate {
 
     constructor(mode) {
