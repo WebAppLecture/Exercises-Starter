@@ -14,6 +14,42 @@ export class GameEngine {
         this.showGameSelect();
     }
 
+    setupCanvas() {
+        this.renderContext = this.screen.getContext('2d');
+        this.screen.classList.add("on");
+    }
+    
+    setKeyMapping() {
+        this.keyMapping = new Map();
+        this.controls.forEach(element => {
+            element.dataset.keybind.split(" ").forEach(keyCode => 
+                this.keyMapping.set(keyCode, element.id)
+            );
+        });
+        return;
+    }
+
+    setupControlListeners() {
+        window.addEventListener("keydown", event => event.repeat || this.input(this.keyMapping.get(event.code), true));
+        window.addEventListener("keyup", event => this.input(this.keyMapping.get(event.code), false));
+        this.controls.forEach(control => {
+            control.addEventListener("mousedown", () => this.input(control.id, true));
+            control.addEventListener("mouseup", () => this.input(control.id, false));
+        });
+    }
+
+    input(type, active) {
+        if(this.game && type !== "reset") {
+            this.game.input(type, active);  
+        } else if(active && this.menuInteraction.hasOwnProperty(type)) {
+            this.menuInteraction[type]();
+        }
+    }
+
+    showGameSelect() {
+        this.menu.load(Object.keys(this.games), this.modeSelect.bind(this));
+    }
+
     loadGame(game, mode) {
         if(game) {
             this.game = new game(mode);
@@ -37,57 +73,17 @@ export class GameEngine {
         }
     }
 
-    showGameSelect() {
-        this.menu.load(Object.keys(this.games), this.modeSelect.bind(this));
-    }
-
     reset() {
         delete this.game;
         this.renderContext.clearRect(0,0,this.screen.width, this.screen.height);
         this.showGameSelect();
     }
 
-    setKeyMapping() {
-        this.keyMapping = new Map();
-        this.controls.forEach(element => {
-            element.dataset.keybind.split(" ").forEach(keyCode => 
-                this.keyMapping.set(keyCode, element.id)
-            );
-        });
-        return;
-    }
-
-    setupControlListeners() {
-        window.addEventListener("keydown", event => event.repeat || this.input(this.keyMapping.get(event.code), true));
-        window.addEventListener("keyup", event => this.input(this.keyMapping.get(event.code), false));
-        this.controls.forEach(control => {
-            control.addEventListener("mousedown", () => this.input(control.id, true));
-            control.addEventListener("mouseup", () => this.input(control.id, false));
-        });
-    }
-
-    setupCanvas() {
-        this.renderContext = this.screen.getContext('2d');
-        this.screen.classList.add("on");
-    }
-
     gameLoop() {  
-        if(this.game !== undefined) {
+        if(this.game) {
             requestAnimationFrame(this.gameLoop.bind(this));  
             this.renderContext.clearRect(0,0,this.screen.width, this.screen.height);
             this.game.tick(this.renderContext);
-        }
-    }
-
-    input(type, active) {
-        if(this.game !== undefined) {
-            if(type === "reset") {
-                this.reset();
-            } else {
-                this.game.input(type, active); 
-            }   
-        } else if(active && this.menuInteraction.hasOwnProperty(type)) {
-            this.menuInteraction[type]();
         }
     }
 
@@ -96,7 +92,7 @@ export class GameEngine {
             "primary": () => this.menu.select(),
             "up": () => this.menu.changeActiveItem(1),
             "down": () => this.menu.changeActiveItem(-1),
-            "reset": () => this.showGameSelect(),
+            "reset": () => this.reset(),
         }
     }
 
