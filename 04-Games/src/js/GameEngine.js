@@ -1,4 +1,5 @@
 import { Menu } from "./Menu.js";
+import { INPUTS } from "./inputs.js";
 
 export class GameEngine {
 
@@ -8,15 +9,10 @@ export class GameEngine {
         this.menu = new Menu(menu);
         this.games = games;
 
-        this.setupCanvas();
+        this.renderContext = this.screen.getContext('2d');
         this.setKeyMapping();
         this.setupControlListeners();
         this.showGameSelect();
-    }
-
-    setupCanvas() {
-        this.renderContext = this.screen.getContext('2d');
-        this.screen.classList.add("on");
     }
     
     setKeyMapping() {
@@ -39,10 +35,13 @@ export class GameEngine {
     }
 
     input(type, active) {
-        if(this.game && type !== "reset") {
+        if(active && type === INPUTS.RESET) {
+            this.reset();
+        } 
+        if(this.game) {
             this.game.input(type, active);  
-        } else if(active && this.menuInteraction.hasOwnProperty(type)) {
-            this.menuInteraction[type]();
+        } else if(active) {
+            this.menuInput(type);
         }
     }
 
@@ -87,20 +86,17 @@ export class GameEngine {
         }
     }
 
-    get menuInteraction() {
-        return {
-            "primary": () => this.menu.select(),
-            "up": () => this.menu.changeActiveItem(1),
-            "down": () => this.menu.changeActiveItem(-1),
-            "reset": () => this.reset(),
+    menuInput(type) {
+        switch(type) {
+            case INPUTS.PRIMARY:
+                this.menu.select();
+                break;
+            case INPUTS.UP:
+                this.menu.changeActiveItem(1);
+                break;
+            case INPUTS.DOWN:
+                this.menu.changeActiveItem(-1);
+                break;
         }
-    }
-
-    getGameByName(name) {
-        return this.games.find(game => game.NAME.toLowerCase() === name.toLowerCase());
-    }
-
-    static getModeByName(game, modeName) {
-        return game.MODES.find(mode => mode.NAME.toLowerCase() === modeName.toLowerCase());
     }
 }

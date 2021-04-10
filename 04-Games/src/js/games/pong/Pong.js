@@ -1,6 +1,12 @@
-import { GameTemplate } from "./GameTemplate.js";
-import { GameObject, MovableGameObject, Ball } from "../GameObject.js";
+import { GameTemplate } from "../GameTemplate.js";
+import { GameObject, Ball } from "../../GameObject.js";
+import { Paddle } from './Paddle.js';
+import { INPUTS } from "../../inputs.js";
 
+/**
+ * GameBox Implementation des Klassikers "Pong".
+ * https://de.wikipedia.org/wiki/Pong
+ */
 export class Pong extends GameTemplate{
 
     start() {
@@ -10,6 +16,7 @@ export class Pong extends GameTemplate{
         this.leftPoints = 0;
         this.rightPoints = 0;
         this.pointsToWin = 5;
+        super.start();
     }
 
     checkPoints() {
@@ -18,21 +25,34 @@ export class Pong extends GameTemplate{
         }
     }
 
-    get inputBinding() {
-        return {
-            "up": active => this.leftPaddle.up(active), 
-            "down": active => this.leftPaddle.down(active),  
-            "primary": active => this.rightPaddle.up(active),
-            "secondary": active => this.rightPaddle.down(active),
-        };
-    }
-
     get gameOverText() {
         return [
             "GAME OVER", 
             "",
             "",
             "rematch: E"];
+    }
+
+    input(type, active) {
+        if(this.gameOver && active && type === INPUTS.PRIMARY) {
+            this.start();
+        }
+        switch(type) {
+            case INPUTS.PRIMARY:
+                this.rightPaddle.up(active)
+                break;
+            case INPUTS.SECONDARY:
+                this.rightPaddle.down(active)
+                break;
+            case INPUTS.UP:
+                this.leftPaddle.up(active)
+                break;
+            case INPUTS.DOWN:
+                this.leftPaddle.down(active)
+                break;
+            default:
+                break;
+        }
     }
 
     update(ctx) {
@@ -126,66 +146,21 @@ export class Pong extends GameTemplate{
     static get MODES() {
         return {
             easy: {
-                "maxBallSpeed": 8,
-                "paddleSize": 100,
-                "paddleSpeed": 8,
+                maxBallSpeed: 8,
+                paddleSize: 100,
+                paddleSpeed: 10,
             },
             medium: {
-                "maxBallSpeed": 20,
-                "paddleSize": 80,
-                "paddleSpeed": 8,
+                maxBallSpeed: 20,
+                paddleSize: 80,
+                paddleSpeed: 8,
             },
             hard: {
-                "maxBallSpeed": 30,
-                "paddleSize": 60,
-                "paddleSpeed": 12,
+                maxBallSpeed: 30,
+                paddleSize: 60,
+                paddleSpeed: 12,
             },
         };
-    }
-
-}
-
-export class Paddle extends MovableGameObject {
-    
-    constructor(x, y, width, height, speed) {
-        super(x, y, width, height, "#6bd26b", 0, 0);
-        this.speed = speed;
-    }
-
-    up(bool) {    
-        this.vy = bool * -this.speed; 
-    }
-
-    down(bool) {
-        this.vy = bool * this.speed;
-    }
-
-    left(bool) {    
-        this.vx = bool * -this.speed; 
-    }
-
-    right(bool) {
-        this.vx = bool * this.speed;
-    }
-
-    update(ctx) {
-
-        if(this.vy === 0 && this.vx === 0) {
-            return;
-        }
-        if(this.y < 0) { // Top border
-            this.y = 0;
-        } 
-        if(this.y + this.height > ctx.canvas.height) { // bottom border
-            this.y = ctx.canvas.height - this.height;
-        }
-        if(this.x < 0) { // left border
-            this.x = 0;
-        } 
-        if(this.x + this.width > ctx.canvas.width) { // right border
-            this.x = ctx.canvas.width - this.width;
-        }
-        super.update();
     }
 
 }

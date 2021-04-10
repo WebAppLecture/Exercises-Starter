@@ -1,5 +1,5 @@
 /**
- * Provides funtionality to reduce framerate from requestAnimationFrame's 60fps.
+ * Provides funtionality to reduce framerate from requestAnimationFrame.
  * 
  * based on  markE's solution: https://stackoverflow.com/questions/19764018/controlling-fps-with-requestanimationframe
  */

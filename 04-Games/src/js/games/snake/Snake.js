@@ -1,26 +1,38 @@
-import { GameTemplate } from "./GameTemplate.js";
-import { GameObject, StrokedObject } from "../GameObject.js";
-import { FpsControl } from "../FpsControl.js";
+import { GameTemplate } from "../GameTemplate.js";
+import { GameObject, StrokedObject } from "../../GameObject.js";
+import { FpsControl } from "./FpsControl.js";
+import { INPUTS } from "../../inputs.js";
 
 export class Snake extends GameTemplate{
 
     start() {
         this.fpsControl = new FpsControl();
-        this.fpsControl.fps = 2;
+        this.fpsControl.fps = this.speed;
 
         this.startLength = 10;
         this.headOrientation = Snake.orientations.UP;
         this.nextMove = this.headOrientation;
         this.segments = [];
         this.initSnake(this.startLength);
+        super.start();
+    }
+
+    input(type, active) {
+        if(this.inputBinding.hasOwnProperty(type)) {
+            this.inputBinding[type](active);
+        }
+        if(this.gameOver && active && type === INPUTS.PRIMARY) {
+            console.log("start");
+            this.start();
+        }
     }
 
     get inputBinding() {
         return {
-            "up": this.changeDirection.bind(this, Snake.orientations.UP), 
-            "down": this.changeDirection.bind(this, Snake.orientations.DOWN),  
-            "left": this.changeDirection.bind(this, Snake.orientations.LEFT),
-            "right": this.changeDirection.bind(this, Snake.orientations.RIGHT),
+            up: active => this.changeDirection(Snake.orientations.UP, active), 
+            down: active => this.changeDirection(Snake.orientations.DOWN, active),  
+            left: active => this.changeDirection(Snake.orientations.LEFT, active),
+            right: active => this.changeDirection(Snake.orientations.RIGHT, active),
         };
     }
 
@@ -44,7 +56,7 @@ export class Snake extends GameTemplate{
     }
 
     update(ctx) {
-        if(this.gameOver || this.fpsControl.frameLock) {
+        if(this.fpsControl.frameLock) {
             return;
         }
         
@@ -141,6 +153,20 @@ export class Snake extends GameTemplate{
             UP: { x: 0, y: -1 },
             DOWN: { x: 0, y: 1 },
         };
+    }
+
+    static get MODES() {
+        return {
+            slow: {
+                speed: 2
+            },
+            medium: {
+                speed: 5
+            },
+            fast: {
+                speed: 10
+            }
+        }
     }
 
 }
