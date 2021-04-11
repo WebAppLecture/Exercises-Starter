@@ -13,9 +13,9 @@ const GAMES = {
 };
 
 window.gameEngine = new GameEngine(
-    document.querySelector(".controls").children, 
+    document.querySelectorAll(".control"), 
     document.querySelector(".screen"),
-    document.querySelector(".menu"),
+    document.querySelector(".menu ul"),
     GAMES);
 
 let skinStyle = document.querySelector("#skin"),

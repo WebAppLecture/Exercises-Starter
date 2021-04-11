@@ -6,7 +6,8 @@ body {
 }
 
 .gameBox {
-
+    aspect-ratio: 1 / 1.4;
+    padding: 0 16vh;
     background:
         radial-gradient(5vh 10vh at 100% 100%, #300 40%, var(--bone-dark) 50%, transparent 52%) 45% 62% / 5vh 5vh no-repeat,
         radial-gradient(5vh 10vh at 0% 100%, #300 40%, var(--bone-dark) 50%, transparent 52%) 55% 62% / 5vh 5vh no-repeat,
@@ -23,12 +24,10 @@ body {
 .reset {
     color: var(--text-color);
     text-shadow: 0 0 1vh var(--text-color);
-    transform: translateX(5vh) translateY(-10vh) rotate(-25deg);
+    transform: translateX(-5vh) translateY(-2vh) rotate(-25deg);
 }
 
 .screen {
-    margin: 0 20vh;
-
     box-shadow: 0 0 5vh 0 black inset;
 
     border-top-left-radius: 10vh 5vh;
@@ -39,11 +38,7 @@ body {
 
 .reset {
     font-size: 5vh;
-    transform: translateX(-15vh) rotate(20deg);
-}
-
-.menu {
-    margin: 0 26vh ;
+    transform: translateX(0) rotate(20deg);
 }
 
 .accent,
@@ -64,7 +59,7 @@ body {
         radial-gradient(86vh 5vh at 50% 100%, transparent 50%, var(--bone-dark) 52%, var(--bone-light)) 8vh 7.3vh / 86vh 6vh no-repeat;
 
     z-index: -1;
-    transform: translateX(5vh) translateY(-28vh) rotate(20deg);
+    transform: translateX(25vh) translateY(-28vh) rotate(20deg);
 }
 
 .accent::after {

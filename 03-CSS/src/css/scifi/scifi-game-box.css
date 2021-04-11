@@ -17,8 +17,8 @@ body {
 .gameBox {
     background: 
         linear-gradient(to right, transparent 10%, hsla(0, 0%, 0%, 0.3) 25% 35%, hsla(0, 0%, 100%, 0.9) 60%, transparent 80%),
-        radial-gradient(1vh 2.5vh at 0% 80%, transparent 5vh, hsla(0, 0%, 0%, .8) 6vh, darkgrey 6.1vh),
-        radial-gradient(1vh 2.5vh at 100% 80%, transparent 5vh, hsla(0, 0%, 0%, .8) 6vh, darkgrey 6.1vh),
+        radial-gradient(1vh 2.5vh at 4% 82%, transparent 4vh, hsla(0, 0%, 0%, .8) 5vh, darkgrey 5.1vh),
+        radial-gradient(1vh 2.5vh at 96% 82%, transparent 4vh, hsla(0, 0%, 0%, .8) 5vh, darkgrey 5.1vh),
         linear-gradient(to right, hsla(205, 100%, 8%, 0.7), hsla(204, 100%, 50%, 0.1) 5% 98%, hsla(205, 100%, 8%, 0.7));
 
     background-size: 100% 100%, 50% 100%, 50% 100%, 100% 100%;
@@ -49,11 +49,11 @@ body {
     z-index: -1;
 
     background-image: 
-        radial-gradient(ellipse at 5vh 0, transparent .9vh, hsla(0, 0%, 0%, .7) 1vh, hsla(240, 100%, 50%, .5) 1.5vh, hsla(240, 100%, 50%, .5) 2.7vh, hsla(195, 53%, 79%, .5) 3vh, transparent 3.1vh),    
+        radial-gradient(ellipse at 3.5vh 0, transparent .9vh, hsla(0, 0%, 0%, .7) 1vh, hsla(240, 100%, 50%, .5) 1.5vh, hsla(240, 100%, 50%, .5) 2.7vh, hsla(195, 53%, 79%, .5) 3vh, transparent 3.1vh),    
         linear-gradient(to right, darkred, red 1vh, black 2vh, transparent 2vh),
-        radial-gradient(ellipse at 5vh 2vh, hsla(0, 0%, 0%, .7) 1vh, hsla(240, 100%, 50%, .5) 1.5vh, hsla(240, 100%, 50%, .5) 2.5vh, hsla(240, 100%, 27%, .5) 3vh, transparent 3.1vh);
-    background-size: 10vh 2vh, 10vh 2vh, 10vh 2vh;
-    background-position: 0 0, 4vh 0, 0 0;
+        radial-gradient(ellipse at 3.5vh 2vh, hsla(0, 0%, 0%, .7) 1vh, hsla(240, 100%, 50%, .5) 1.5vh, hsla(240, 100%, 50%, .5) 2.5vh, hsla(240, 100%, 27%, .5) 3vh, transparent 3.1vh);
+    background-size: 7vh 2vh, 7vh 2vh, 7vh 2vh;
+    background-position: 0 0, 2.5vh 0, 0 0;
     background-repeat: round, round, round, no-repeat;
 
     animation: pump 1s ease-in-out alternate infinite;
@@ -91,11 +91,15 @@ body {
     box-shadow: 0 0 .8vh .2vh black inset,
     .7vh .6vh .9vh 0 rgba(255, 255, 255, 0.9),
     -.4vh -.7vh 1.4vh 0 hsla(0, 0%, 0%, .5);
+    background: rgba(0, 102, 0, .8);
 }
 
 .accent {
     width: 20vh;
     height: 20vh;
+
+    grid-area: unset;
+    position: absolute;
 
     top: calc(60% - 10vh);
     left: calc(50% - 10vh);

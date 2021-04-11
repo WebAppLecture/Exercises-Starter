@@ -1,4 +1,4 @@
-.controls > *,
+.control,
 .skin-change > div {    
     background-color: var(--orange);
 
@@ -9,8 +9,6 @@
 }
 
 .d-pad {
-    margin-top: 6vh;
-
     border-top-left-radius: 3.5vh;
     border-top-right-radius: 3.5vh;
     border-bottom-right-radius: 5vh 100%;
@@ -55,8 +53,6 @@
 }
 
 .big-button {   
-    transform: rotate(-20deg);
-
     box-shadow: 0 0 .6vh 0 var(--shadow),
         .4vh .8vh .5vh .1vh inset var(--button-highlight), 
         0 0 0 .8vh inset var(--purple-trans);
@@ -88,16 +84,6 @@
 
 .reset:active {
     font-size: 2.2vh;
-}
-
-.A {
-    left: 80%;
-    margin-top: 2vh;
-}
-
-.B {
-    left: 62%;
-    margin-top: 8vh;
 }
 
 .skin-change > div {

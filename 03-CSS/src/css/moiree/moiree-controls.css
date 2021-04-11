@@ -1,4 +1,4 @@
-.controls > *,
+.control,
 .skin-change > div,
 .reset::after {
     background: hsla(0, 0%, 0%, .8);
@@ -22,20 +22,20 @@
 }
 
 .skin-change {
-    position: absolute;
-    left: 4vh;
-    bottom: 3vh;
+    transform: translateX(2vh);
 }
 
 .skin-change > div {
-    width: 5vh;
-    height: 5vh;
-
-    line-height: 5.5vh;
+    width: 4vh;
+    height: 4vh;
+    font-size: 4vh;
+    line-height: 4.5vh;
 }
 
 .reset {
     visibility: hidden;
+    position: relative;
+    height: 4vh;
 }
 
 .reset::after {
@@ -43,16 +43,16 @@
     display: block;
     position: absolute;
     content: "X";
-    top: 0;
+    top: 1vh;
     left: 0;
-    width: 5vh;
-    height: 5vh;
+    width: 4vh;
+    height: 4vh;
 
-    font-size: 5vh;
-    line-height: 5vh;
+    font-size: 4vh;
+    line-height: 4vh;
 }
 
-.controls > div:active,
+.control:active,
 .skin-change > div:active,
 .reset:active::after {
     color: var(--text-active-color);

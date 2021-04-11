@@ -1,6 +1,7 @@
 .accent,
 .accent:after,
 .accent:before {
+    grid-area: unset;
     display: block;
     position: absolute;
     width: 20vh;
@@ -64,16 +65,16 @@ body:active .accent:before {
         transform: translateX(-6vh) translateY(-93.5vh) rotate(0deg);
     }
     48% {
-        transform: translateX(40.5vh) translateY(-93.5vh) rotate(0deg);
+        transform: translateX(39vh) translateY(-93.5vh) rotate(0deg);
     }
     50% {
-        transform: translateX(40.5vh) translateY(-93.5vh) rotate(90deg);
+        transform: translateX(39vh) translateY(-93.5vh) rotate(90deg);
     }
     80% {
-        transform: translateX(40.5vh) translateY(5vh) rotate(90deg);
+        transform: translateX(39vh) translateY(5vh) rotate(90deg);
     }
     82% {
-        transform: translateX(40.5vh) translateY(5vh) rotate(180deg);
+        transform: translateX(39vh) translateY(5vh) rotate(180deg);
     }
     98% {
         transform: translateX(-6vh) translateY(5vh) rotate(180deg);

@@ -4,12 +4,11 @@
 }
 
 .A {
-    left: 76%;
+    transform: translateX(-2vh) translateY(-5vh) skewY(10deg);
 }
 
 .B {
-    margin-top: 8.7vh;
-    left: 66%;
+    transform: translateY(1.5vh) translateX(2vh) skewY(10deg);
 }
 
 .reset {
@@ -40,28 +39,27 @@
 }
 
 .d-pad {
-    margin-top: 3vh;
     font-size: 8vh;
     line-height: 17vh;
 }
 
 .up {
-    transform: translateY(-5vh) skewY(10deg);
+    transform: translateY(-8vh) skewY(10deg);
 }
 
 .right {
-    transform: translateX(7.5vh) translateY(1vh) skewY(10deg);
+    transform: translateX(7.5vh) translateY(-2vh) skewY(10deg);
 }
 
 .down {
-    transform: translateY(5vh) skewY(10deg);
+    transform: translateY(2vh) skewY(10deg);
 }
 
 .left {
-    transform: translateX(-7.5vh) translateY(-2vh) skewY(10deg);
+    transform: translateX(-7.5vh) translateY(-5vh) skewY(10deg);
 }
 
-.controls > div:active {
+.control:active {
     color: var(--glow);
     text-shadow: 0vh -.2vh 0 var(--accent1),
         .3vh -.1vh 0 var(--accent2),

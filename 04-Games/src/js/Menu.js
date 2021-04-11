@@ -18,7 +18,7 @@ export class Menu {
         this.show();
 
         items.forEach(item => {
-            let listElement = document.createElement("ul");
+            let listElement = document.createElement("li");
             listElement.innerText = item;
             this.domElement.appendChild(listElement);
         });
