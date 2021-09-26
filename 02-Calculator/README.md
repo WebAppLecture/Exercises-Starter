@@ -34,7 +34,8 @@ Betrifft: **[calculator.html](calculator.html)**, **[index.js](index.js)**
 
 Heute kümmert ihr euch selbst darum dass euer Javascript auch geladen wird.
 * Fügt im HTMl eine `<script>` Tag ein
-    * plaziert den Tag nach dem body um Ladezeiten zu verbessern
+    * plaziert den Tag im `<head>`
+    * `defer` der Code soll asynchron geladen werden, um das erste Rendern der Seite nicht zu blockieren
     * `type='module'` da wir Javascript in ES6 Modulen schreiben
     * `src='./index.js'`, Relativpfad zu unserem Javascript
 * importiert `Calculator` in `index.js`
