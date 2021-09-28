@@ -15,12 +15,12 @@ export class Pong extends GameTemplate{
         this.ball = new Ball(200, 240, 20, 20, "#6bd26b", 8, 0);
         this.leftPoints = 0;
         this.rightPoints = 0;
-        this.pointsToWin = 5;
+        this.POINTS_TO_WIN = 5;
         super.start();
     }
 
     checkPoints() {
-        if(this.leftPoints >= this.pointsToWin || this.rightPoints >= this.pointsToWin) { 
+        if(this.leftPoints >= this.POINTS_TO_WIN || this.rightPoints >= this.POINTS_TO_WIN) { 
             this.end();
         }
     }
