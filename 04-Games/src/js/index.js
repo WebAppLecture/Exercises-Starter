@@ -15,7 +15,7 @@ const GAMES = {
 window.gameEngine = new GameEngine(
     document.querySelectorAll(".control"), 
     document.querySelector(".screen"),
-    document.querySelector(".menu ul"),
+    document.querySelector(".menu"),
     GAMES);
 
 let skinStyle = document.querySelector("#skin"),

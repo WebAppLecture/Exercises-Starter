@@ -20,8 +20,7 @@ body {
 }
 
 .hidden {
-    display: none;
-    list-style-type: none;
+    display: none !important;
 }
 
 .gameBox {
@@ -73,6 +72,8 @@ body {
 .menu {
     grid-area: screen;
     align-self: start;
+    display: flex;
+    flex-direction: column;
     width: 28vh;
     height: max-content;
     max-height: 44vh;
@@ -86,12 +87,7 @@ body {
         0 0 1vh 0 var(--green) inset;
 }
 
-.menu > ul {
-    display: contents;
-}
-
-.menu li {
-    list-style: none;
+.menu span {
     margin: 1vh 3vh; 
 
     font-family: monospace;
@@ -105,7 +101,7 @@ body {
     border: .4vh solid transparent;
 }
 
-.menu li.active {
+.menu span.active {
     border: .4vh solid var(--green);
     box-shadow: 0 0 1vh 0 var(--green),
         0 0 1vh 0 var(--green) inset;
