@@ -46,7 +46,7 @@ export class GameEngine {
     }
 
     showGameSelect() {
-        this.menu.load(Object.keys(this.games), this.modeSelect.bind(this));
+        this.menu.load(Object.keys(this.games), name => this.modeSelect(name));
     }
 
     loadGame(game, mode) {
@@ -68,7 +68,7 @@ export class GameEngine {
             this.menu.hide();
             this.loadGame(game);
         } else {
-            this.menu.load(Object.keys(modes), this.loadGameWithMode.bind(this, game))
+            this.menu.load(Object.keys(modes), mode => this.loadGameWithMode(game, mode))
         }
     }
 
