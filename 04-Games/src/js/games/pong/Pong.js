@@ -139,10 +139,6 @@ export class Pong extends GameTemplate{
         return "Pong";
     }
 
-    get MODES() {
-        return Pong.MODES;
-    }
-
     static get MODES() {
         return {
             easy: {
