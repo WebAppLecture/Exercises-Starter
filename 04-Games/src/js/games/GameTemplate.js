@@ -1,5 +1,3 @@
-import { INPUTS } from "../inputs.js";
-
 /**
  * 'Abstrakte' Klasse die alle Interfaces definiert die nötig sind um GameBox Spiel auszuführen.
  */
@@ -109,17 +107,17 @@ export class GameTemplate {
      */
     input(type, active) {
         switch(type) {
-            case INPUTS.PRIMARY:
+            case "primary":
                 break;
-            case INPUTS.SECONDARY:
+            case "secondary":
                 break;
-            case INPUTS.UP:
+            case "up":
                 break;
-            case INPUTS.RIGHT:
+            case "right":
                 break;
-            case INPUTS.DOWN:
+            case "down":
                 break;
-            case INPUTS.LEFT:
+            case "left":
                 break;
             default:
                 break;

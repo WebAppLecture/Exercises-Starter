@@ -1,5 +1,4 @@
 import { Menu } from "./Menu.js";
-import { INPUTS } from "./inputs.js";
 
 export class GameEngine {
 
@@ -35,7 +34,7 @@ export class GameEngine {
     }
 
     input(type, active) {
-        if(active && type === INPUTS.RESET) {
+        if(active && type === "reset") {
             this.reset();
         } 
         if(this.game) {
@@ -88,13 +87,13 @@ export class GameEngine {
 
     menuInput(type) {
         switch(type) {
-            case INPUTS.PRIMARY:
+            case "primary":
                 this.menu.select();
                 break;
-            case INPUTS.UP:
+            case "up":
                 this.menu.changeActiveItem(1);
                 break;
-            case INPUTS.DOWN:
+            case "down":
                 this.menu.changeActiveItem(-1);
                 break;
         }

@@ -1,7 +1,6 @@
 import { GameTemplate } from "../GameTemplate.js";
 import { GameObject, StrokedObject } from "../../GameObject.js";
 import { FpsControl } from "./FpsControl.js";
-import { INPUTS } from "../../inputs.js";
 
 export class Snake extends GameTemplate{
 
@@ -21,7 +20,7 @@ export class Snake extends GameTemplate{
         if(this.inputBinding.hasOwnProperty(type)) {
             this.inputBinding[type](active);
         }
-        if(this.gameOver && active && type === INPUTS.PRIMARY) {
+        if(this.gameOver && active && type === "primary") {
             console.log("start");
             this.start();
         }

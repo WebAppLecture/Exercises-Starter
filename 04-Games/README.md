@@ -15,7 +15,7 @@ Andere Spiele in der GameBox:
 
 ## 00 Vorbereitung ##
 
-* Wechselt zum Git Branch der gestrigen Übung und erstellt daruaf basierend einen neuen Branch für die heutige Übung. z.B. `Ü4-bearbeitung`
+* Wechselt zum **Git Branch der gestrigen Übung** und erstellt daruaf basierend einen neuen Branch für die heutige Übung. z.B. `Ü4-bearbeitung`
 * So stellen wir sicher dass ihr euren schönen Skin von gestern weiter benutzen könnt. (**[index.js](./src/js/index.js)** skins Liste ändern!)
 
 ## 01 Code Verständnis ##
@@ -28,10 +28,10 @@ Stellt euch diese Fragen:
 * Warum benutzt Snake keine Kollisionsabfragen?
 * Warum macht es Sinn auf `keydown` bzw `keyup` events zu reagieren anstatt `keypress`?
 * Wo sind die Tastenbelegungen (WASD, QE, etc) festgelegt, und wo werden sie angewendet? 
-* Wo wird eigentlich `this.maxBallSpeed` in Pong gesetzt?
+* Wie wird eigentlich `this.maxBallSpeed` in Pong gesetzt?
 * Warum brauchen wir `this.maxBallSpeed` überhaupt?
 * Wie erhöht man die Geschwindigkeit der Schlange in Snake?
-* Warum müssen `update` und `draw` Aufrufe den Canvaskontext `ctx` erhalten?
+* Warum müssen `update` und `draw` Aufrufe den Canvaskontext erhalten (oft im Code: `ctx` )?
 
 ## 02 Falling Stones ##
 
@@ -58,9 +58,9 @@ FallingStones erbt von GameTemplate (`class FallingStones extends GameTemplate`)
 Jede Klasse die von **[GameTemplate](./src/js/games/GameTemplate.js)** erbt, hat damit auch alle Methoden die in **[GameTemplate](./src/js/games/GameTemplate.js)** definiert sind.
 Einige dieser Funktionen benutzen wir ohne Veränderung, andere müssen wir in **[FallingStones.js](./src/js/games/FallingStones.js)** überschreiben.
 
-Erstelle die Funktionen:
+Erstelle diese Funktionen:
 * `start()` (setzt darin `this.gameOver=false`)
-* `bindControls()` 
+* `input(type, active)` 
 * `update(ctx)`
 * `draw(ctx)`
 
@@ -75,9 +75,9 @@ Zeichne in `draw()` den Spieler um das Objekt auf dem Canvas anzuzeigen. (`this.
 
 Der Spieler soll sich auch bewegen können.
 
-Füge in `input()` einen `switch` hinzu der die Eingaben mit den Bewegungen des Spielerobjekts verknüpft.
-* `INPUT.LEFT` nach links
-* `INPUT.RIGHT` nach rechts
+Füge in `input()` eine Fallunterscheidung (`switch`) hinzu, die die übergebenen Eingaben (`type`, `active`) mit den Bewegungen des Spielerobjekts verknüpft. (vgl. Umsetzung in z.B. Pong)
+* `"left"` nach links
+* `"right` nach rechts
 
 Aktualisiere in `update` den Zustand des Spielers um Bewegung zu ermöglichen. (`this.player.update(ctx)`)
 
@@ -85,7 +85,7 @@ Aktualisiere in `update` den Zustand des Spielers um Bewegung zu ermöglichen. (
 
 Erstelle in `start()` das leere Array `this.bullets`.
 Füge **FallingStones** eine Funktion `createBullet()` hinzu die ein Projektil an der Position des Spielers erzeugt und dies `this.bullets` hinzufügt. Auch für Projektile könnt ihr vorhandene Klassen verwenden.
-Füge einen Eintrag in `input()` hinzu der `INPUT.UP` mit dieser Funktion verknüpft.
+Füge einen Eintrag in `input()` hinzu der `"up"` mit dieser Funktion verknüpft.
 
 Füge **FallingStones** eine Funktion `updateBullets()` hinzu die von `update()` aufgerufen wird.
 Funktionalitäten:
@@ -115,7 +115,7 @@ Funktionalität:
 ### 02.7 High Score! ###
 
 Erstelle in `start()` die Variablen `this.points` und `this.life`
-Überschreibe den geerbten Getter `gameOverText` um zusätzlich auch die Punkte anzeigen zu könne.
+Überschreibe den geerbten Getter `get gameOverText()` um zusätzlich auch die Punkte anzeigen zu könne.
 
 Erweitere deine bestehenden Funktionen:
 * Ein Stein der erfolgreich das Spielfeld verlässt zieht eine Leben ab

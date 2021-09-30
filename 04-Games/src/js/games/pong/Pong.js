@@ -1,7 +1,6 @@
 import { GameTemplate } from "../GameTemplate.js";
 import { GameObject, Ball } from "../../GameObject.js";
 import { Paddle } from './Paddle.js';
-import { INPUTS } from "../../inputs.js";
 
 /**
  * GameBox Implementation des Klassikers "Pong".
@@ -34,20 +33,20 @@ export class Pong extends GameTemplate{
     }
 
     input(type, active) {
-        if(this.gameOver && active && type === INPUTS.PRIMARY) {
+        if(this.gameOver && active && type === "primary") {
             this.start();
         }
         switch(type) {
-            case INPUTS.PRIMARY:
+            case "primary":
                 this.rightPaddle.up(active)
                 break;
-            case INPUTS.SECONDARY:
+            case "secondary":
                 this.rightPaddle.down(active)
                 break;
-            case INPUTS.UP:
+            case "up":
                 this.leftPaddle.up(active)
                 break;
-            case INPUTS.DOWN:
+            case "down":
                 this.leftPaddle.down(active)
                 break;
             default:
