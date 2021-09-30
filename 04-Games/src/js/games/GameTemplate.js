@@ -1,26 +1,62 @@
+/**
+ * 'Abstrakte' Klasse die alle Interfaces definiert die nötig sind um GameBox Spiel auszuführen.
+ */
 export class GameTemplate {
 
+    /**
+     * Konstruktor, erstellt die Instanzen der Klasse.
+     * Extern aufgerufen durch 'new GameTemplate(mode)'.
+     * @param {*} mode String der auf den gewählten Modus (definiert in MODES) zeigt
+     */
     constructor(mode) {
-        this.gameOverText = ["GAME OVER", "Restart: A"];
-        this.fillStyle = "#6bd26b";
         this.applyMode(mode);
         this.start();
-        this.bindControls();
     }
 
+    /**
+     * Definiert den am Ende des Spiels angezeigten Text.
+     */
+    get gameOverText() {
+        return ["GAME OVER"];
+    }
+
+    /**
+     * Setzt die in MODE definierten Werte.
+     * 
+     * 'this.constructor' erlaubt uns auch in erbenden Klassen auf statische Methoden/Variablen zuzugreifen.
+     * Entspricht hier GameTemplate.MODES; vererbt korrekt zu Pong.MODES bei Pong.
+     * 
+     * Object.assign(a, b) fügt alle Eigenschaften von Object b zu Object a hinzu.
+     * In diesem Fall alle im jeweiligen MODE definierten Variablenwerte zu this.
+     * @param {*} mode String der auf den gewählten Modus (definiert in MODES) zeigt
+     */
     applyMode(mode) {
-        if(!mode) {
-            return;
-        }
-        Object.keys(mode.parameters).forEach(key => {
-            this[key] = mode.parameters[key];
-        });
+        if(mode && this.constructor.MODES.hasOwnProperty(mode)) {
+            Object.assign(this, this.constructor.MODES[mode]);
+        }   
     }
 
-    start() {}
+    /**
+     * Alle Änderungen die beim Start des Spiels gemacht werden müssen.
+     * z.B. gameOver deaktivieren, Spieler erstellen, Zählvariablen zurücksetzen, usw.
+     */
+    start() {
+        this.gameOver = false;
+    }
 
-    bindControls() {}
+    /**
+     * Alle Änderungen die bei Ende des Spiels ausgeführt werden sollen.
+     * z.B. setzen der gameOver Variable, löschen von Objekten, usw.
+     */
+    end() {
+        this.gameOver = true;
+    }
 
+    /**
+     * Wird von GameEngine.gameLoop() einmal pro Frame aufgerufen.
+     * D.h. 60 mal pro Sekunde bei üblichen Bildschirmen.
+     * @param {*} ctx rendering Kontext der Canvas
+     */
     tick(ctx) {
         if(this.gameOver) {
             this.gameOverScreen(ctx);
@@ -30,14 +66,30 @@ export class GameTemplate {
         this.draw(ctx);
     }
 
-    update() {}
+    /**
+     * Updatemethode
+     * Beinhaltet jegliche regelmäßige Berechnung des Spiels.
+     * z.B. Bewegung, Kollisionsabfragen, Spawnverhalten, usw.
+     * @param {*} ctx rendering Kontext der Canvas
+     */
+    update(ctx) {}
 
-    draw() {}
+    /**
+     * Zeichenmethode
+     * Beinhaltet die draw() Aufrufe aller zu zeichnenden Objekte in der Szene.
+     * @param {*} ctx rendering Kontext der Canvas
+     */
+    draw(ctx) {}
 
+    /**
+     * Zeichnet den Textinhalt von this.gameOverText in die Szene.
+     * Wird in jedem tick() aufgerufen, erlaubt also auch Animation.
+     * @param {*} ctx rendering Kontext der Canvas
+     */
     gameOverScreen(ctx) {
         let fontSize = 30;
-        ctx.fillStyle = this.fillStyle;
-        ctx.font = fontSize + "x monospace";
+        ctx.fillStyle = "#6bd26b";
+        ctx.font = fontSize + "px monospace";
         ctx.textAlign = "center";
         ctx.textBaseLine = "middle";
 
@@ -47,20 +99,34 @@ export class GameTemplate {
         }); 
     }
 
+    /**
+     * Schnittstelle für Nutzereingaben.
+     * Wird von GameEngine.input() aufgerufen
+     * @param {*} type Typ des Eingabe Events
+     * @param {*} active true falls mouse/key-down, false falls mouse/key-up
+     */
     input(type, active) {
-        if(this.gameOver && type === "primary") {
-            this.start();   
-            this.bindControls();  
-        }
-        if(this.inputBinding.hasOwnProperty(type)) {
-            this.inputBinding[type](active);
+        switch(type) {
+            case "primary":
+                break;
+            case "secondary":
+                break;
+            case "up":
+                break;
+            case "right":
+                break;
+            case "down":
+                break;
+            case "left":
+                break;
+            default:
+                break;
         }
     }
 
-    static get NAME() {
-        return "No Name given";
-    }
-
+    /**
+     * Definiert verfügbare Modi für das Spiel.
+     */
     static get MODES() {
         return [];
     }

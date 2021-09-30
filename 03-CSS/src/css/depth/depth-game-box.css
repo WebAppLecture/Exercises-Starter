@@ -27,7 +27,7 @@ body {
 }
 
 .logo {
-    transform: translateY(-.5vh) skewY(10deg) translateX(10vh);
+    transform: translateY(-1.5vh) skewY(10deg) translateX(15vh);
     text-shadow: 0vh -.2vh 0 var(--accent1),
         .3vh -.1vh 0 var(--accent2),
         .3vh 0vh .3vh var(--stroke);
@@ -37,17 +37,14 @@ body {
     padding: 0vh 0vh 1vh 2vh;
     border: .2vh solid var(--stroke);
     box-shadow: none;
-    transform: skewY(10deg) translateX(-1vh);
-}
-
-.screen.on {
+    transform: translateY(-.5vh) skewY(10deg) translateX(-1vh);
     background: 
-    var(--box-effect),
-    #060;
+        var(--box-effect),
+        #060;
 }
 
 .skin-change {
-    bottom: 12vh;
+    align-self: center;
 }
 
 .skin-change > div {

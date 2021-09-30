@@ -10,19 +10,18 @@ body {
 
 .gameBox,
 .logo,
-.controls,
-.controls > *,
+.control,
 .skin-change > div {
     border: .2vh dashed black;
 }
 
-.controls > *,
+.control,
 .skin-change > div {
     background-color: darkgray;
     font-size: 3vh;
 }
 
-.controls > div:active,
+.control:active,
 .skin-change > div:active {
     border: .2vh dashed yellow;
 }

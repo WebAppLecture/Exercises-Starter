@@ -68,9 +68,8 @@ body::after {
 
 .gameBox,
 .logo,
-.controls,
 .screen,
-.controls > *,
+.control,
 .skin-change,
 .skin-change > div {
     font-family: 'Righteous', cursive;
@@ -78,13 +77,12 @@ body::after {
 }
 
 .logo {
-    position: relative;
+    padding-left: 2vh;
     color: black;
     text-shadow: 0 0 2vh var(--text-color);
 }
 
 .screen {
-    position: relative;
     border-radius: 3vh;
     opacity: .9;
 }

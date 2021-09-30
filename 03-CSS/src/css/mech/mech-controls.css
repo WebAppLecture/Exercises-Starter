@@ -1,4 +1,4 @@
-.controls > *,
+.control,
 .skin-change > div {
     background-color: var(--brown);
 
@@ -18,12 +18,12 @@
     box-shadow: 0 0 .5vh 0 black;
 }
 
-.controls > *{
+.control {
     font-size: 5vh;
 
 }
 
-.controls > div:active,
+.control:active,
 .skin-change > div:active {
     box-shadow: 0 0 2vh 0 black inset,
         0 0 1vh 0 var(--text-color);
@@ -59,6 +59,10 @@
     border-radius: 1vh;
 
     font-size: 2.5vh;
+}
+
+.skin-change {
+    width: max-content;
 }
 
 .skin-change > div {

@@ -7,9 +7,19 @@ body {
 }
 
 .gameBox {
-    background-color: linen;
     box-shadow: 1vh 1vh 5vh 0 black;
     border: .2vh solid black;
+
+    background: 
+        linear-gradient(90deg, black 10%, transparent 15% 85%, black 90%) 97% 92% / 2vh 5.4vh no-repeat,
+        radial-gradient(20vh 40vh at 0 100%, transparent 39.5%, black 40% 40.5%, tomato 41% 49%, black 49.5% 49.8%, transparent 50%) 99% 85% / 11vh 13vh no-repeat,
+        linear-gradient(90deg, black 5%, transparent 6% 93%, black 94%) 72% 91.5% / 4vh 3.4vh no-repeat,
+        radial-gradient(8vh 10vh at 70% 84%, lightskyblue 47%, black 48% 49%, transparent 50%),
+        radial-gradient(40vh 25vh at 2vh 65vh, green, darkgreen 49.5%, black 50%, transparent 50.5%),
+        radial-gradient(20vh 40vh at 100% 40%, transparent 46%, black 47%, brown 48%, orange) 0vh 90% / 15vh 20vh no-repeat,
+        radial-gradient(15vh 8vh at 0 0, orange -28%, brown 50%, black 52.5%, transparent 53%) 0vh 100% / 15vh 8vh no-repeat,
+        linear-gradient(to bottom, black 3%, green 4%, darkgreen 100%) 0 100% / 100% 10vh no-repeat,
+        linen;
 }
 
 .logo {
@@ -23,28 +33,10 @@ body {
 }
 
 .screen {
-    margin: 0 2vh 2vh 2vh;
     transform: rotate(.5deg);
 }
 
-.controls {
-    position: relative;
-    width: calc(100% - 4vh);
-    height: 35vh;
-    margin: 0 2vh;
-    transform: rotate(-.3deg);
-
-    background: 
-        linear-gradient(90deg, black 10%, transparent 15% 85%, black 90%) 96.68% 100% / 2vh 5.4vh no-repeat,
-        radial-gradient(20vh 40vh at 0 100%, transparent 39.5%, black 40% 41%, tomato 41.5% 49%, black  49.5% 50%, transparent 50.5%) 99% 75% / 11vh 13vh no-repeat,
-        linear-gradient(90deg, black 5%, transparent 6% 93%, black 94%) 72% 100% / 4vh 3.4vh no-repeat,
-        radial-gradient(8vh 10vh at 70% 78%, lightskyblue 47%, black 48% 49%, transparent 50%),
-        radial-gradient(40vh 20vh at 2vh 12vh, green, darkgreen 49.5%, black 50%, transparent 50.5%),
-        radial-gradient(20vh 40vh at 100% 40%, transparent 46%, black 47%, brown 48%, orange) 0vh 100% / 15vh 20vh no-repeat;
-}
-
-.controls::before {
-    position: absolute;
+.accent::before {
     display: block;
     visibility: visible;
 
@@ -62,19 +54,15 @@ body {
     z-index: 0;
 }
 
-.controls:active::before {
+.gameBox:active .accent::before {
     content: "...but they don't have arms, bummer.";
 }
 
 .reset {
-    position: absolute;
-    top: -58vh;
-    right: 0vh;
+    font-size: 3vh;
 }
 
 .d-pad {
-    position: absolute;
-    margin-top: 12vh;
     width: 5vh;
     height: 5vh;
     background: radial-gradient(circle at 70% 30%, red, orange 70%);
@@ -89,25 +77,18 @@ body {
 
 .big-button {
     border: .2vh solid black;
-    background: linen;
     text-align: center;
     font-size: 5vh;
 }
 
 .A {
-    left: 78%;
-    margin-top: 10vh;
+    transform: translateY(-9vh);
     background: tomato;
 }
 
 .B {
-    margin-top: 16vh;
+    transform: translateY(-4vh) translateX(2vh);
     background: lightskyblue;
-}
-
-.skin-change {
-    bottom: 1vh;
-    width: calc(100% - 4vh);   
 }
 
 .skin-change > div {
@@ -189,6 +170,6 @@ body {
     content: "left!?";
 }
 
-.controls > div:active::after {
+.control:active::after {
     visibility: visible;
 }

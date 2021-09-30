@@ -1,4 +1,4 @@
-.controls > *,
+.control,
 .skin-change > div {
     background-color: var(--gold);
     background: linear-gradient(to right,var(--gold) 25%,var(--bright-gold) 60%,var(--gold) 85%); 
@@ -13,8 +13,6 @@
 }
 
 .d-pad {
-    margin-top: 6vh;
-
     border-top-left-radius: 3.5vh;
     border-top-right-radius: 3.5vh;
     border-bottom-right-radius: 5vh 100%;
@@ -89,7 +87,6 @@
 
 .skin-change > div {
     width: 4vh;
-    margin-right: 1vh;
 
     border-top: .5vh solid var(--gold);
     border-right: .5vh solid var(--dark-gold);

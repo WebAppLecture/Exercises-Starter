@@ -33,10 +33,6 @@
     margin-top: 10vh;
 }
 
-.d-pad {
-    left: 32.5%;
-}
-
 *::before,
 *::after {
     pointer-events: none;
@@ -52,8 +48,6 @@
     display: block;
     position: absolute;
     
-    width: 100%;
-    height: 100%;
     content: "";
 }
 
@@ -81,8 +75,7 @@
 }
 
 .up {
-    left: 33.5%;
-    transform: none;
+    transform: translateY(0);
 }
 
 .down {
@@ -137,14 +130,11 @@
 }
 
 .skin-change {
-    top: 84%;
-    left: 53%;
 }
 
 .skin-change > div,
 .skin-change > div::before,
 .skin-change > div::after {
-    position: absolute;
     border-top-left-radius: 10vh 5vh;
     border-top-right-radius: 10vh 5vh;
     border-bottom-right-radius: 10vh 20vh;

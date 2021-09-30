@@ -8,17 +8,17 @@
     <body>
         <div class="centered gameBox">
             <div class="logo">GameBox</div>
-            <canvas class="screen" width="400" height="500"></canvas>
-            <nav class="menu"></nav>
-            <div class="controls">
-                <div class="reset" id="reset">menu</div>
-                <div id="primary" class="big-button A">A</div>
-                <div id="secondary" class="big-button B">B</div>
-                <div id="up" class="d-pad up">^</div>
-                <div id="right" class="d-pad right">^</div>
-                <div id="down" class="d-pad down">^</div>
-                <div id="left" class="d-pad left">^</div>
-            </div>
+            <canvas class="screen on" width="400" height="600"></canvas>
+            <nav class="menu">
+                <ul></ul>
+            </nav>
+            <div id="reset" data-keybind="Escape" class="control reset">menu</div>
+            <div id="primary" data-keybind="KeyE Enter" class="control big-button A">E</div>
+            <div id="secondary" data-keybind="KeyQ" class="control big-button B">Q</div>
+            <div id="up" data-keybind="KeyW ArrowUp" class="control d-pad up">^</div>
+            <div id="right" data-keybind="KeyD ArrowRight" class="control d-pad right">^</div>
+            <div id="down" data-keybind="KeyS ArrowDown" class="control d-pad down">^</div>
+            <div id="left" data-keybind="KeyA ArrowLeft" class="control d-pad left">^</div>
             <nav class="skin-change">
                 <div class="previous"><</div>
                 <div class="next">></div>

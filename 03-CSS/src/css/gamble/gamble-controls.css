@@ -1,5 +1,4 @@
 .d-pad {
-    margin-top: 4vh;
     width: 10vh;
     height: 11.8vh;
 
@@ -35,6 +34,7 @@
     background-repeat: no-repeat;
 
     transform-origin: 50% 60%;
+    margin-top: -9vh;
 
     font-size: 5vh;
     text-align: center;
@@ -53,7 +53,7 @@
 }
 
 @keyframes up-rotation {
-    100% { transform: rotate(0deg) translateY(-7vh) rotate(360deg); }
+    100% { transform: rotate(10deg) translateY(-7vh) rotate(360deg); }
 }
 
 .right:active {
@@ -61,7 +61,7 @@
 }
 
 @keyframes right-rotation {
-    100% { transform: rotate(90deg) translateY(-7vh) rotate(360deg); }
+    100% { transform: rotate(100deg) translateY(-7vh) rotate(360deg); }
 }
 
 .down:active {
@@ -69,7 +69,7 @@
 }
 
 @keyframes down-rotation {
-    100% { transform: rotate(180deg) translateY(-7vh) rotate(360deg); }
+    100% { transform: rotate(190deg) translateY(-7vh) rotate(360deg); }
 }
 
 .left:active {
@@ -77,7 +77,7 @@
 }
 
 @keyframes left-rotation {
-    100% { transform: rotate(270deg) translateY(-7vh) rotate(360deg); }
+    100% { transform: rotate(280deg) translateY(-7vh) rotate(360deg); }
 }
 
 .big-button,
@@ -119,22 +119,28 @@
 }
 
 .reset {
-    top: 1vh;
-    right: 5vh;
     visibility: hidden;
 }
 
 .reset::after {
     display: block;
     position: absolute;
-    top: 0;
+    top: -2vh;
     visibility: visible;
     content: "X";
 }
 
 .skin-change {
-    bottom: 0vh;
     transform: rotate(20deg);
+    width: max-content;
+}
+
+.skin-change > div {
+    width: 6vh;
+    height: 6vh;
+
+    font-size: 3vh;
+    line-height: 6vh;
 }
 
 .previous {
@@ -143,7 +149,7 @@
 
 .next {
     transform: rotate(-18deg);
-    margin-left: -3vh;
+    margin-left: -1vh;
 }
 
 .big-button:active,

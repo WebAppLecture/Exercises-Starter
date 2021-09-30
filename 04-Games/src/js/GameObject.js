@@ -100,11 +100,3 @@ export class Ball extends MovableGameObject {
     }
 
 }
-
-export class Mode {
-
-    constructor(name, parameters) {
-        this.NAME = name;
-        this.parameters = parameters;
-    }
-}

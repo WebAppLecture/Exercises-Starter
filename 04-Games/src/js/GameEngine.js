@@ -1,20 +1,51 @@
-import { Pong } from "./games/Pong.js";
-import { Snake } from "./games/Snake.js";
-import { TestGame } from "./games/TestGame.js";
-import { Inputs } from "./Inputs.js";
 import { Menu } from "./Menu.js";
-import { FallingStones } from "./games/FallingStones.js";
 
 export class GameEngine {
 
-    constructor(controls, screen, menu) {
-        this.controls = controls;
+    constructor(controls, screen, menu, games) {
+        this.controls = Array.from(controls);
         this.screen = screen;
         this.menu = new Menu(menu);
+        this.games = games;
 
-        this.setupCanvas();
-        this.setupControls();
+        this.renderContext = this.screen.getContext('2d');
+        this.setKeyMapping();
+        this.setupControlListeners();
         this.showGameSelect();
+    }
+    
+    setKeyMapping() {
+        this.keyMapping = new Map();
+        this.controls.forEach(element => {
+            element.dataset.keybind.split(" ").forEach(keyCode => 
+                this.keyMapping.set(keyCode, element.id)
+            );
+        });
+        return;
+    }
+
+    setupControlListeners() {
+        window.addEventListener("keydown", event => event.repeat || this.input(this.keyMapping.get(event.code), true));
+        window.addEventListener("keyup", event => this.input(this.keyMapping.get(event.code), false));
+        this.controls.forEach(control => {
+            control.addEventListener("mousedown", () => this.input(control.id, true));
+            control.addEventListener("mouseup", () => this.input(control.id, false));
+        });
+    }
+
+    input(type, active) {
+        if(active && type === "reset") {
+            this.reset();
+        } 
+        if(this.game) {
+            this.game.input(type, active);  
+        } else if(active) {
+            this.menuInput(type);
+        }
+    }
+
+    showGameSelect() {
+        this.menu.load(Object.keys(this.games), name => this.modeSelect(name));
     }
 
     loadGame(game, mode) {
@@ -24,27 +55,20 @@ export class GameEngine {
         }
     }
 
-    loadGameWithMode(game) {
-        let modeName = this.menu.activeItem.innerText,
-            mode = GameEngine.getModeByName(game, modeName);
+    loadGameWithMode(game, mode) {
         this.menu.hide();
         this.loadGame(game, mode);
     }
 
-    modeSelect() {
-        let name = this.menu.activeItem.innerText,
-            game = GameEngine.getGameByName(name),
+    modeSelect(name) {
+        let game = this.games[name],
             modes = game.MODES;
         if(modes.length === 0 ) {
             this.menu.hide();
             this.loadGame(game);
         } else {
-            this.menu.load(modes, this.loadGameWithMode.bind(this, game))
+            this.menu.load(Object.keys(modes), mode => this.loadGameWithMode(game, mode))
         }
-    }
-
-    showGameSelect() {
-        this.menu.load(GameEngine.availableGames, this.modeSelect.bind(this));
     }
 
     reset() {
@@ -53,109 +77,25 @@ export class GameEngine {
         this.showGameSelect();
     }
 
-    setupControls() {
-        this.setKeyMapping();
-        this.populateKeyText();
-        this.setupControlListeners();
-    }
-
-    setKeyMapping() {
-        this.keyMapping = {};
-        Object.keys(Inputs).forEach(inputName => {
-            Inputs[inputName].keys.forEach(key => {
-                this.keyMapping[key] = inputName;
-            });
-        });
-    }
-
-    populateKeyText() {
-        this.controls.querySelectorAll("*").forEach(control => {
-            control.innerText = Inputs[control.id].text;
-        });
-    }
-
-    setupControlListeners() {
-        window.addEventListener("keydown", this.onKeyDown.bind(this));
-        window.addEventListener("keyup", this.onKeyUp.bind(this));
-        this.controls.querySelectorAll("*").forEach(control => {
-            control.addEventListener("mousedown", this.onControlMouseDown.bind(this));
-            control.addEventListener("mouseup", this.onControlMouseUp.bind(this));
-        });
-    }
-
-    setupCanvas() {
-        this.renderContext = this.screen.getContext('2d');
-        this.screen.classList.add("on");
-    }
-
     gameLoop() {  
-        if(this.game !== undefined) {
+        if(this.game) {
             requestAnimationFrame(this.gameLoop.bind(this));  
             this.renderContext.clearRect(0,0,this.screen.width, this.screen.height);
             this.game.tick(this.renderContext);
         }
     }
 
-    onKeyDown(event) {
-        if(event.repeat) { return; }
-        this.input(this.keyMapping[event.code], true)
-    }
-
-    onKeyUp(event) {
-        this.input(this.keyMapping[event.code], false);
-    }
-
-    onControlMouseDown(event) {
-        this.input(event.target.id, true);      
-    }
-
-    onControlMouseUp(event) {
-        this.input(event.target.id, false);      
-    }
-
-    input(type, active) {
-        if(this.game !== undefined) {
-            if(type === "reset") {
-                this.reset();
-            } else {
-                this.game.input(type, active); 
-            }   
-        } else if(active && this.menuInteraction.hasOwnProperty(type)) {
-            this.menuInteraction[type]();
+    menuInput(type) {
+        switch(type) {
+            case "primary":
+                this.menu.select();
+                break;
+            case "up":
+                this.menu.changeActiveItem(1);
+                break;
+            case "down":
+                this.menu.changeActiveItem(-1);
+                break;
         }
-    }
-
-    get menuInteraction() {
-        return {
-            "primary": () => this.menu.select(),
-            "up": () => this.menu.changeActiveItem(1),
-            "down": () => this.menu.changeActiveItem(-1),
-            "reset": () => this.showGameSelect(),
-        }
-    }
-
-    static get availableGames() {
-        return [Pong, Snake, TestGame, FallingStones];
-    }
-
-    static getGameByName(name) {
-
-        for(let i = GameEngine.availableGames.length; i--; ) {
-            let game = GameEngine.availableGames[i];
-            if(game.NAME.toLowerCase() === name.toLowerCase()) {
-                return game;
-            }
-        }
-        return false;
-    }
-
-    static getModeByName(game, modeName) {
-        for(let i = game.MODES.length; i--; ) {
-            let mode = game.MODES[i];
-            if(mode.NAME.toLowerCase() === modeName.toLowerCase()) {
-                return mode;
-            }
-        }
-        return false;
     }
 }

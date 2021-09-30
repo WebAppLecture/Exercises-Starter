@@ -1,33 +1,45 @@
-import { GameTemplate } from "./GameTemplate.js";
-import { GameObject, StrokedObject } from "../GameObject.js";
-import { FpsControl } from "../FpsControl.js";
+import { GameTemplate } from "../GameTemplate.js";
+import { GameObject, StrokedObject } from "../../GameObject.js";
+import { FpsControl } from "./FpsControl.js";
 
 export class Snake extends GameTemplate{
 
     start() {
         this.fpsControl = new FpsControl();
-        this.fpsControl.fps = 2;
+        this.fpsControl.fps = this.speed;
 
         this.startLength = 10;
         this.headOrientation = Snake.orientations.UP;
         this.nextMove = this.headOrientation;
         this.segments = [];
-        this.gameOver = false;
         this.initSnake(this.startLength);
-        this.spawnFood();
+        super.start();
     }
 
-    end() {
-        this.gameOver = true;
+    input(type, active) {
+        if(this.inputBinding.hasOwnProperty(type)) {
+            this.inputBinding[type](active);
+        }
+        if(this.gameOver && active && type === "primary") {
+            console.log("start");
+            this.start();
+        }
     }
 
-    bindControls() {
-        this.inputBinding = {
-            "up": this.changeDirection.bind(this, Snake.orientations.UP), 
-            "down": this.changeDirection.bind(this, Snake.orientations.DOWN),  
-            "left": this.changeDirection.bind(this, Snake.orientations.LEFT),
-            "right": this.changeDirection.bind(this, Snake.orientations.RIGHT),
+    get inputBinding() {
+        return {
+            up: active => this.changeDirection(Snake.orientations.UP, active), 
+            down: active => this.changeDirection(Snake.orientations.DOWN, active),  
+            left: active => this.changeDirection(Snake.orientations.LEFT, active),
+            right: active => this.changeDirection(Snake.orientations.RIGHT, active),
         };
+    }
+
+    get gameOverText() {
+        return [
+            "GAME OVER", 
+            "Score: " + (this.segments.length - this.startLength) ,
+            "Restart: E"];
     }
 
     initSnake(size) {
@@ -43,18 +55,21 @@ export class Snake extends GameTemplate{
     }
 
     update(ctx) {
-        if(this.gameOver || this.fpsControl.frameLock) {
+        if(this.fpsControl.frameLock) {
             return;
         }
         
         this.moveSegments();
 
         if(this.borderCollsion(ctx) || this.selfCollision()) {
-            this.gameOverText = ["GAME OVER", "Score: " + (this.segments.length - this.startLength) ,"Restart: A"];
             this.end();
         }
 
         this.foodCollision();
+
+        if(!this.food) {
+            this.spawnFood(ctx);
+        }
     }
 
     moveSegments() {
@@ -72,7 +87,7 @@ export class Snake extends GameTemplate{
     draw(ctx) {
         this.drawBoundingBox(ctx);
         this.segments.forEach(segment => segment.draw(ctx));
-        this.food.draw(ctx);
+        this.food?.draw(ctx);
     }
 
     drawBoundingBox(ctx) {
@@ -105,32 +120,26 @@ export class Snake extends GameTemplate{
     foodCollision() {
         let head = this.segments[0];
 
-        if(this.food.x === head.x && this.food.y === head.y) {
+        if(this.food && this.food.x === head.x && this.food.y === head.y) {
             this.segments.push(new GameObject(
                 this.food.x,
                 this.food.y,
                 25, 25, "#6bd26b"
             ));
-
-            this.spawnFood();
+            delete this.food;
         }
     }
 
-    spawnFood() {
+    spawnFood(ctx) {
         let size = 25,
             x,
             y,
             legalCoordinates = false;
     
         while(!legalCoordinates) {
-            legalCoordinates = true;
-            x = Math.floor(Math.random() * 400/size) * size;
-            y = Math.floor(Math.random() * 500/size) * size;
-            this.segments.forEach(segment => {
-                if(segment.x === x && segment.y === y) {
-                    legalCoordinates = false;
-                }
-            })
+            x = Math.floor(Math.random() * ctx.canvas.width/size) * size;
+            y = Math.floor(Math.random() * ctx.canvas.height/size) * size;
+            legalCoordinates = !this.segments.some(segment => segment.x === x && segment.y === y);
         }
 
         this.food = new StrokedObject(x, y, 25, 25, "#6bd26b", 5);
@@ -145,8 +154,18 @@ export class Snake extends GameTemplate{
         };
     }
 
-    static get NAME() {
-        return "Snake";
+    static get MODES() {
+        return {
+            slow: {
+                speed: 2
+            },
+            medium: {
+                speed: 5
+            },
+            fast: {
+                speed: 10
+            }
+        }
     }
 
 }

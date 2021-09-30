@@ -28,20 +28,23 @@
 
 .A,
 .next {
-    left: 70%;
     border-radius: .3vh 50% 50% .3vh;
 }
 
 .B,
 .previous {
-    margin-top: 9.5vh;
-    left: 60.5%;
     border-radius: 50% .3vh .3vh 50%;
 }
 
+.A {
+    transform: translate(-4vh, -7vh) rotate(-60deg);
+}
+
+.B {
+    transform: translate(2vh, .3vh) rotate(-60deg);
+}
+
 .d-pad {
-    left: 6vh;
-    margin-top: 0;
     width: 8vh;
     height: 8vh;
 
@@ -53,7 +56,7 @@
     background-repeat: no-repeat;
 
     transform-origin: 102% 102%;
-    transform: rotate(45deg);
+    transform: translate(-1vh, -7vh) rotate(45deg);
 
     border-radius: .3vh;
     border-top-left-radius: 100%;
@@ -63,19 +66,15 @@
 }
 
 .right {
-    transform: rotate(135deg);
+    transform: translate(-1vh, -7vh) rotate(135deg);
 }
 
 .down {
-    transform: rotate(225deg);
+    transform: translate(-1vh, -7vh) rotate(225deg);
 }
 
 .left {
-    transform: rotate(315deg);
-}
-
-.skin-change {
-    left: 10%;
+    transform: translate(-1vh, -7vh) rotate(315deg);
 }
 
 .skin-change > div {
