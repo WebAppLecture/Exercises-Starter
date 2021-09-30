@@ -77,7 +77,7 @@ body {
     width: 28vh;
     height: max-content;
     max-height: 44vh;
-    margin: 2vh 9vh;
+    margin: 2vh auto;
 
     overflow-y: hidden;
     z-index: 1;
